@@ -10,12 +10,4 @@ class Admin
     {
         print task
     }
-    
-    static void main(String )
-    {
-        Admin admin = new Admin();
-        admin.run();
-    
-        
-    }
 }
