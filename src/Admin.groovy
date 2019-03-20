@@ -6,8 +6,8 @@ class Admin
     {
         println name
     }
-    void run()
+    string run()
     {
-        print task
+      return task
     }
 }
