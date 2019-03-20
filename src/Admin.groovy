@@ -6,7 +6,7 @@ class Admin
     {
         println name
     }
-    string run()
+    String run()
     {
       return task
     }
