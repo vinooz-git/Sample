@@ -1,4 +1,3 @@
-@NonCPS
 def call() {
 def prop = new PropertyReader();
 def propert = prop.returnData("${WORKSPACE}/pipeline.properties")
