@@ -1,6 +1,7 @@
 def call() {
-def prop = new Properties("${WORKSPACE}/pipeline.properties");
+def prop = new PropertyReader();
+def propert = prop.returnData("${WORKSPACE}/pipeline.properties")
 def runtimeString = 'python'
-assert prop.type == 'python'
+assert propert.type == 'python'
 
 }

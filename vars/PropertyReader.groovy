@@ -1,20 +1,10 @@
 class PropertyReader {
-
-   String filePath
-   PropertyReader()
-   {
-   
-   }
-   public PropertyReader(String filePath) {
-        this.filePath = filePath
-	  returnData(filePath)
-    }
-	String returnData(Path)
-	{
 	InputStream input = null;
-	input = new FileInputStream(Path);
-	return prop	
+    String filePath
+   	String returnData(filePath)
+	{
+	input = new FileInputStream(filePath);
 	prop.load(input);
-	}
-    
+	return prop	
+	}    
 }
