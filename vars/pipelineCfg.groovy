@@ -1,9 +1,11 @@
-@Grab('org.yaml:snakeyaml:1.17')
-import org.yaml.snakeyaml.Yaml
-
 def call() {
+Properties properties = new Properties()
+File propertiesFile = new File(${WORKSPACE}/pipeline.properties)
+propertiesFile.withInputStream {
+    properties.load(it)
+}
 
-Yaml parser = new Yaml()
-List example = parser.load(("${WORKSPACE}/pipeline.yaml" as File).text)
-return example
+def runtimeString = 'type'
+assert properties."$runtimeString" == 'python'
+
 }
