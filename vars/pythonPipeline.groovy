@@ -1,7 +1,7 @@
 def call() {
   node {
-    stage('Checkout') {
-      echo "Checkout completed"
+    stage('VmSetup') {
+      VmOperation()
     }
     def p = pipelineCfg()
     
