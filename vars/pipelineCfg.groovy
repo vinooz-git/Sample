@@ -1,9 +1,6 @@
 def call() {
-Properties prop = new Properties();
-	InputStream input = null;
-	input = new FileInputStream("${WORKSPACE}/pipeline.properties");
-	prop.load(input);
+def prop = new Properties("${WORKSPACE}/pipeline.properties");
 def runtimeString = 'python'
-assert prop.type == 'pytho'
+assert prop.type == 'python'
 
 }
