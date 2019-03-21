@@ -16,7 +16,7 @@ vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExist
 
 if(propert.VmRevert == 'Yes')
 {
-def vmname = propert.VmName
+vmname = propert.VmName
 }
 
 }
