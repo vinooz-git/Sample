@@ -1,6 +1,6 @@
 def call() {
 Properties properties = new Properties()
-File propertiesFile = new File(${WORKSPACE}/pipeline.properties)
+File propertiesFile = new File("${WORKSPACE}/pipeline.properties")
 propertiesFile.withInputStream {
     properties.load(it)
 }
