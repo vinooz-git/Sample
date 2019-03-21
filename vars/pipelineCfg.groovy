@@ -4,6 +4,6 @@ Properties prop = new Properties();
 	input = new FileInputStream("${WORKSPACE}/pipeline.properties");
 	prop.load(input);
 def runtimeString = 'python'
-assert prop.type == 'python'
+assert prop.type == 'pytho'
 
 }
