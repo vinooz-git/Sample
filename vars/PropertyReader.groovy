@@ -1,6 +1,6 @@
 class ProertyReader
 {
-def call()
+public ProertyReader()
 {
 	InputStream input = null;
     Properties prop = new Properties();
