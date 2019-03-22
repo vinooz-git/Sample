@@ -3,7 +3,7 @@ class PropertyReader
 	InputStream input = null;
     String filePath
 	
-@NonCPS
+
  String returnData(filePath)
 {
 	Properties prop = new Properties();
