@@ -1,4 +1,10 @@
-def call() {
+def call() 
+{
+readFile()
+}
+
+def readFile()
+{
 	InputStream input = null;
     Properties prop = new Properties();
 	input = new FileInputStream("${WORKSPACE}/pipeline.properties");
