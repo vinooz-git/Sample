@@ -11,8 +11,7 @@ if(propert.VmPowerOn == 'Yes')
 @NonCPS
 def VmSwitchOn(vmname1)
 {
-	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: vmname1], serverName: 'Neptune'
-	
+	vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: vmname1], serverName: 'Neptune'
 }
 @NonCPS
 def VmSwitchOff(vmname1)
