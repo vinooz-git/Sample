@@ -4,7 +4,7 @@ public ProertyReader()
 {
 	returnDatas()
 }
-
+}
 def returnDatas()
 {
 InputStream input = null;
