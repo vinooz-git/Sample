@@ -28,7 +28,7 @@ def VmSwitchOff(vmname1)
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: vmname1], serverName: 'Neptune'
 }
 @NonCPS
-def VmRevert(vmname1)
+def VmRevert(VmName, snapshot)
 {
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: snapshot, vm: VmName], serverName: 'Neptune'
 }
