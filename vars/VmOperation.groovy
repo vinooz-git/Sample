@@ -5,12 +5,12 @@ def prop = new PropertyReader();
 def propert = prop.returnData("${WORKSPACE}/pipeline.properties")
 if(propert.VmPowerOff == 'Yes')
 	{
-	VmSwitchOn()
+	VmSwitchOn(propert.VmName)
 	}
 }	
 @NonCPS
-def VmSwitchOn()
+def VmSwitchOn(vmname1)
 {
-def vmname1 = propert.VmName
+
 		vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: vmname1], serverName: 'Neptune'
 }
