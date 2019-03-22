@@ -2,7 +2,7 @@ def call()
 {
 	InputStream input = null;
     String filePath
- String returnData(filePath)
+ def returnData(filePath)
 	{
 	String data = readData(filePath)
 	return data
