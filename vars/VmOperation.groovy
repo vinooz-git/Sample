@@ -2,13 +2,12 @@ def call()
 {
 def prop = new PropertyReader();
 def propert = prop.returnData("${WORKSPACE}/pipeline.properties")
-if(propert.VmPowerOff)
+if(propert.VmPowerOff == 'Yes')
 	{
 	VmSwitchOn()
 	}
 		
 }
-@NonCPS
 def VmSwitchOn()
 {
 def vmname1 = propert.VmName
