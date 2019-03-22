@@ -1,11 +1,11 @@
 import com.cloudbees.groovy.cps.NonCPS
 def call() 
 {
-def prop = new PropertyReader();
-def propert = prop.returnData("${WORKSPACE}/pipeline.properties")
-if(propert.VmPowerOff == 'Yes')
+ def VmName = 'pa-tst3-w10'
+def propert = 'Yes'
+if(propert == 'Yes')
 	{
-	VmSwitchOn(propert.VmName)
+	VmSwitchOn(VmName)
 	}
 }	
 @NonCPS
