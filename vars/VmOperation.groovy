@@ -3,9 +3,9 @@ def call()
 {
 def propert = PropertyReader("${WORKSPACE}/pipeline.properties")
 def VmName = 'pa-tst3-w10'
-if(propert.VmPowerOff == 'Yes')
+if(propert.VmPowerOn == 'Yes')
 	{
-	VmSwitchOff(VmName)
+	VmSwitchOn(VmName)
 	}
 }	
 @NonCPS
