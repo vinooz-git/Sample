@@ -1,4 +1,4 @@
-class ProertyReader() 
+class ProertyReader
 {
 def call()
 {
