@@ -7,6 +7,10 @@ if(propert.VmPowerOn == 'Yes')
 	{
 	VmSwitchOn(VmName)
 	}
+if(propert.VmPowerOff == 'Yes')
+	{
+	VmSwitchOff(VmName)
+	}
 }	
 @NonCPS
 def VmSwitchOn(vmname1)
