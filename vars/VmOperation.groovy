@@ -1,3 +1,4 @@
+import com.cloudbees.groovy.cps.NonCPS
 def call() 
 {
 def prop = new PropertyReader();
