@@ -16,4 +16,3 @@ class PropertyReader
 	prop.load(input);
 	return prop	
 }    
-}
