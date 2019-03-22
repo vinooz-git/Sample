@@ -1,13 +1,11 @@
-def call() 
+class ProertyReader() 
 {
-readFile()
-}
-
-def readFile()
+def call()
 {
 	InputStream input = null;
     Properties prop = new Properties();
 	input = new FileInputStream("${WORKSPACE}/pipeline.properties");
 	prop.load(input);
 	return prop	 
+}
 }
