@@ -1,4 +1,16 @@
 def call() 
 {
-		vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 300, vm: 'pa-tst3-w10'], serverName: 'Neptune'
+def prop = new PropertyReader();
+def propert = prop.returnData("${WORKSPACE}/pipeline.properties")
+if(propert.VmPowerOff)
+	{
+	VmSwitchOn()
+	}
+		
+}
+@NonCPS
+def VmSwitchOn()
+{
+def vmname1 = propert.VmName
+		vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: vmname1], serverName: 'Neptune'
 }
