@@ -4,7 +4,7 @@ public ProertyReader()
 {
 	returnDatas()
 }
-}
+
 def returnDatas()
 {
 InputStream input = null;
@@ -12,4 +12,5 @@ InputStream input = null;
 	input = new FileInputStream("${WORKSPACE}/pipeline.properties");
 	prop.load(input);
 	return prop	 
+}
 }
