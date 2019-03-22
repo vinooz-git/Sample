@@ -1,10 +1,10 @@
-class PropertyReader 
+def call()
 {
 	InputStream input = null;
     String filePath
  String returnData(filePath)
 	{
-	def data = readData(filePath)
+	String data = readData(filePath)
 	return data
 	}
 }
