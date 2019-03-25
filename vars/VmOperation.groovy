@@ -4,19 +4,21 @@ def call()
 def propert = PropertyReader()
 def VmName = propert.VmName
 def snapshot = propert.snapshotName
-if(propert.VmPowerOn == 'Yes')
-	{
-	VmSwitchOn(VmName)
-	}
-if(propert.VmPowerOff == 'Yes')
-	{
-	VmSwitchOff(VmName)
-	echo "${VmName} is Switched Off"
-	}
-if(propert.VmRevert == 'Yes')
-	{
-	VmRevert(VmName,snapshot)
-	}
+	if(propert.VmPowerOn == 'Yes')
+		{
+		VmSwitchOn(VmName)
+		echo "${VmName} is Switched ON"
+		}
+	if(propert.VmPowerOff == 'Yes')
+		{
+		VmSwitchOff(VmName)
+		echo "${VmName} is Switched Off"
+		}
+	if(propert.VmRevert == 'Yes')
+		{
+		VmRevert(VmName,snapshot)
+		echo "${VmName} is Reverted to ${snapshot} - Snapshot"
+		}
 }	
 @NonCPS
 def VmSwitchOn(vmname1)

@@ -15,10 +15,6 @@ def call()
 	{
     
     }
-	stage('Script Extraction')
-	{
-    
-    }
 	stage('TestSetup')
 	{
     
