@@ -11,6 +11,7 @@ if(propert.VmPowerOn == 'Yes')
 if(propert.VmPowerOff == 'Yes')
 	{
 	VmSwitchOff(VmName)
+	echo "${VmName} is Switched Off"
 	}
 if(propert.VmRevert == 'Yes')
 	{
