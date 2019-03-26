@@ -21,7 +21,7 @@ def Network = propert.Network
 		echo "${VmName} is Reverted to ${snapshot} - Snapshot"
 		}
 }	
-@NonCPS
+
 def VmSwitchOn(vmname1)
 {
 	vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: vmname1], serverName: Network
