@@ -7,7 +7,7 @@ def snapshot = propert.snapshotName
 def Network = propert.Network
 	if(propert.VmPowerOn == 'Yes')
 		{
-		VmSwitchOn(VmName,Network)
+		vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: VmName], serverName: Network
 		echo "${VmName} is Switched ON"
 		}
 	if(propert.VmPowerOff == 'Yes')
