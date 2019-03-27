@@ -6,7 +6,7 @@ class ProertyReader
 	{
 		InputStream input = null;
 		Properties prop = new Properties();
-		input = new FileInputStream("//var//jenkinsFiles//pipeline.properties");
+		input = new FileInputStream("D:\\Jenkins\\pipeline.properties");
 		prop.load(input);
 		return prop	 
 	}
