@@ -13,6 +13,10 @@ class ProertyReader
 	{
 		InputStream input = null;
 		Properties prop = new Properties();
+		sh 'pwd > workspace'
+		workspace = readFile('workspace').trim()
+		println "workSpace is. "+workspace
+		println "Value is ${WORKSPACE}"
 		def PWD = pwd();
 		println "host name :"+PWD
 		println "Value is ${env.WORKSPACE}"
