@@ -4,6 +4,7 @@ import jenkins.*
 import jenkins.model.*
 import hudson.*
 import hudson.model.*
+
 class ProertyReader
 {
 	public ProertyReader()
@@ -12,8 +13,8 @@ class ProertyReader
 	{
 		InputStream input = null;
 		Properties prop = new Properties();
-		def hostname = "${WORKSPACE}"
-		println "host name :"+hostname
+		def PWD = pwd();
+		println "host name :"+PWD
 		println "Value is ${env.WORKSPACE}"
 		input = new FileInputStream("${env.WORKSPACE}"+"\\pipeline.properties");
 		
