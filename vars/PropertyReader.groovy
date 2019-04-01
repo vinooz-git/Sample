@@ -12,7 +12,7 @@ def path
 	{
 	this.path = paths
 	}
-	returnDatas(path)
+	
 	def returnDatas(String filepath)
 	{
 	    InputStream input = null;

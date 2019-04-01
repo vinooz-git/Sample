@@ -5,7 +5,8 @@ node {
     def WORKSPACE = pwd()
     echo "${WORKSPACE}"
 }
-def propert = PropertyReader(WORKSPACE)
+def propertyreader = PropertyReader(WORKSPACE)
+def propert = propertyreader.returnDatas(WORKSPACE)
 def VmName = propert.VmName
 def snapshot = propert.snapshotName
 def Network = propert.Network
