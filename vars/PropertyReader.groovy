@@ -7,6 +7,11 @@ import hudson.model.*
 
 class ProertyReader
 {
+	String path
+	ProertyReader(path)
+	{
+	this.path = path
+	}
 	def returnDatas(String filepath)
 	{
 	    InputStream input = null;
