@@ -1,3 +1,9 @@
+import groovy.util.XmlSlurper
+import java.util.Map
+import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
 class ProertyReader
 {
 	public ProertyReader()
