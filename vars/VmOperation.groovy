@@ -1,4 +1,5 @@
 import com.cloudbees.groovy.cps.NonCPS
+import PropertyReader
 def call() 
 {
 node {
