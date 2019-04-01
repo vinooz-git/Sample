@@ -1,13 +1,7 @@
 import com.cloudbees.groovy.cps.NonCPS
-import PropertyReader
 def call() 
 {
-node {
-    def WORKSPACE = pwd()
-    echo "${WORKSPACE}"
-}
-def propertyreader = new PropertyReader(WORKSPACE)
-def propert = propertyreader.returnDatas(WORKSPACE)
+def propert = PropertyReader()
 def VmName = propert.VmName
 def snapshot = propert.snapshotName
 def Network = propert.Network
