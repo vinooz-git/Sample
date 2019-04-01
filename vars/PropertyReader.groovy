@@ -7,21 +7,16 @@ import hudson.model.*
 
 class ProertyReader
 {
-
-	public ProertyReader()
-	{returnDatas()}
-	def returnDatas()
+def path
+	public ProertyReader(path)
 	{
-	node {
-    def WORKSPACE = pwd()
-		}
-		InputStream input = null;
+	this.path = path
+	returnDatas(path)}
+	def returnDatas( string filepath)
+	{
+	    InputStream input = null;
 		Properties prop = new Properties();
-		
-		println "WORKSPACE Path is :"+WORKSPACE
-		
-		input = new FileInputStream("${WORKSPACE}"+"\\pipeline.properties");
-		
+		input = new FileInputStream(filepath);
 		prop.load(input);
 		return prop	 
 	}
