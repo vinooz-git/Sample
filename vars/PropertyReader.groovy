@@ -1,8 +1,6 @@
 class ProertyReader
 {
 def path
-	public ProertyReader(path)
-	{returnDatas(path)}
 	def returnDatas(String path)
 	{	println "Path Value is"+path
 		InputStream input = null;

@@ -1,7 +1,8 @@
 import com.cloudbees.groovy.cps.NonCPS
+import PropertyReader
 def call() 
 {
-def propert = new PropertyReader("D:\\Jenkins\\Repo")
+def propert = PropertyReader.returnDatas("D:\\Jenkins\\Repo")
 def VmName = propert.VmName
 def snapshot = propert.snapshotName
 def Network = propert.Network
