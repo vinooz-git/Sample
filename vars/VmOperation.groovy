@@ -2,7 +2,7 @@ import com.cloudbees.groovy.cps.NonCPS
 def call() 
 {
 node {
-    env.WORKSPACE = pwd()
+    //env.WORKSPACE = pwd()
     echo "${env.WORKSPACE}"
 }
 println "workSpace is ${env.WORKSPACE}"
