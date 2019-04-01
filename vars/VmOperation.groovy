@@ -1,11 +1,6 @@
 import com.cloudbees.groovy.cps.NonCPS
 def call() 
 {
-node {
-    //env.WORKSPACE = pwd()
-    echo "${env.WORKSPACE}"
-}
-println "workSpace is ${env.WORKSPACE}"
 def propert = PropertyReader()
 def VmName = propert.VmName
 def snapshot = propert.snapshotName
