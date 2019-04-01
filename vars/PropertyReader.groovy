@@ -8,9 +8,9 @@ import hudson.model.*
 class ProertyReader
 {
 def path
-	public ProertyReader(path)
+	public ProertyReader(paths)
 	{
-	this.path = path
+	this.path = paths
 	returnDatas(path)}
 	def returnDatas(String filepath)
 	{
