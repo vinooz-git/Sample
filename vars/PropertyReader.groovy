@@ -12,6 +12,9 @@ class ProertyReader
 	{
 		InputStream input = null;
 		Properties prop = new Properties();
+		def hostname = "${env.NODE_NAME}"
+		println "host name :"+hostname
+		println "Value is ${env.WORKSPACE}"
 		input = new FileInputStream("${env.WORKSPACE}"+"\\pipeline.properties");
 		
 		prop.load(input);
