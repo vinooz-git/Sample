@@ -1,6 +1,9 @@
 import com.cloudbees.groovy.cps.NonCPS
 def call() 
 {
+ssh label: '', script: 'pwd > workspace'
+workspace = readFile('workspace').trim()
+println "workSpace is. "+workspace
 def propert = PropertyReader()
 def VmName = propert.VmName
 def snapshot = propert.snapshotName
