@@ -13,7 +13,7 @@ class ProertyReader
 	{
 		InputStream input = null;
 		Properties prop = new Properties();
-		sh 'pwd > workspace'
+		ssh label: '', script: 'pwd > workspace'
 		workspace = readFile('workspace').trim()
 		println "workSpace is. "+workspace
 		println "Value is ${WORKSPACE}"
