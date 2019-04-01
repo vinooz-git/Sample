@@ -7,13 +7,14 @@ import hudson.model.*
 
 class ProertyReader
 {
-node {
-    def WORKSPACE = pwd()
-}
+
 	public ProertyReader()
 	{returnDatas()}
 	def returnDatas()
 	{
+	node {
+    def WORKSPACE = pwd()
+		}
 		InputStream input = null;
 		Properties prop = new Properties();
 		
