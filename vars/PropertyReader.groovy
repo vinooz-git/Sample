@@ -11,7 +11,8 @@ def path
 	public ProertyReader(paths)
 	{
 	this.path = paths
-	returnDatas(path)}
+	}
+	returnDatas(path)
 	def returnDatas(String filepath)
 	{
 	    InputStream input = null;
