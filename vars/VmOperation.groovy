@@ -1,5 +1,5 @@
 import com.cloudbees.groovy.cps.NonCPS
-import PropertyReader
+package PropertyReader
 def call() 
 {
 def propert = PropertyReader.returnDatas("D:\\Jenkins\\Repo")
