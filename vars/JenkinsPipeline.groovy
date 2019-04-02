@@ -2,7 +2,7 @@ def call()
 {
    stage('VmSetup') 
 	{
-		node ('master')
+		node ("master")
 		{
 			VmOperation()
 			echo "Vm operations completed"
