@@ -1,7 +1,5 @@
 class ProertyReader
 {
-	public ProertyReader()
-	{returnDatas()}
 	def returnDatas()
 	{
 		node 
