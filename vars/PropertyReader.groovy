@@ -1,9 +1,17 @@
 def call()
 {
 		node 
-		{ // To get environmental value
-			def workspace = env.WORKSPACE
-			println"workspace path is "+workspace
+		{ 
+		// To get environmental value
+		def jenkins = Jenkins.instance
+    
+        //get job Item
+		def item = Jenkins.instance.getItemByFullName("${env.JOB_NAME}")
+    
+		// get workspacePath for the job Item
+		def workspacePath = Jenkins.instance.getWorkspaceFor(item)
+		println "Workspace path - " + workspacePath
+    		
 		InputStream input = null;
 		Properties prop = new Properties();
 		println"workspace path is "+workspace
