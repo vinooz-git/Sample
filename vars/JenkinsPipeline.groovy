@@ -1,15 +1,13 @@
 def call() 
 {
- node 
+ node ('master')
   {
     stage('VmSetup') 
 	{
-	node('master')
-	{ 
 	VmOperation()
 	echo "Vm operations completed"
-	}
     }
+  }
     stage('BuildDownload')
 	{
 	node('pa-tst4-w7') 
