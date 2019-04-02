@@ -7,7 +7,7 @@ def call()
     
         //get job Item
 		def item = Jenkins.instance.getItemByFullName("${env.JOB_NAME}")
-    
+		println "Job name - " + item
 		// get workspacePath for the job Item
 		def workspacePath = Jenkins.instance.getWorkspaceFor(item)
 		println "Workspace path - " + workspacePath

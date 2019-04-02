@@ -4,8 +4,11 @@ def call()
   {
     stage('VmSetup') 
 	{
-      VmOperation()
-	  echo "Vm operations completed"
+		node("master")
+		{ 
+			VmOperation()
+			echo "Vm operations completed"
+		}
     }
     stage('BuildDownload')
 	{
