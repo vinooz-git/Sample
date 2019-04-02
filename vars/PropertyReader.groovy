@@ -1,13 +1,13 @@
 def call()
 {
 		node 
-		{
+		{ // To get environmental value
 			def workspace = env.WORKSPACE
 			println"workspace path is "+workspace
 		}
 		InputStream input = null;
 		Properties prop = new Properties();
-		input = new FileInputStream("D:\\Jenkins\\pipeline.properties");
+		input = new FileInputStream("${workspace}"+"\\pipelineJob.properties");
 		prop.load(input);
 		return prop	 
 
