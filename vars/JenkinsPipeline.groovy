@@ -1,6 +1,6 @@
 def call() 
 {
- node ('master')
+ node ("master")
   {
     stage('VmSetup') 
 	{
