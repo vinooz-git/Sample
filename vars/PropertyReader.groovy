@@ -1,7 +1,5 @@
-class ProertyReader
+def call()
 {
-	def returnDatas()
-	{
 		node 
 		{
 			def workspace = env.WORKSPACE
@@ -12,5 +10,5 @@ class ProertyReader
 		input = new FileInputStream("D:\\Jenkins\\pipeline.properties");
 		prop.load(input);
 		return prop	 
-	}
+
 }
