@@ -7,7 +7,7 @@ def call()
 		}
 		InputStream input = null;
 		Properties prop = new Properties();
-		input = new FileInputStream("${workspace}"+"\\pipelineJob.properties");
+		input = new FileInputStream(workspace.toString()+"\\pipelineJob.properties");
 		prop.load(input);
 		return prop	 
 
