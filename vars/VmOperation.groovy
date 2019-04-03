@@ -3,6 +3,7 @@ def call()
 {
 def propert = PropertyReader()
 def VmName = propert.VmName
+println "vm name is"+VmName
 def snapshot = propert.snapshotName
 def Network = propert.Network
 	if(propert.VmPowerOn == 'Yes')
