@@ -2,7 +2,7 @@ import com.cloudbees.groovy.cps.NonCPS
 def call() 
 {
 def propert = PropertyReader()
-def VmName = propert.VmName
+def VmName = propert.VmNames
 println "vm name is"+VmName
 def snapshot = propert.snapshotName
 def Network = propert.Network
