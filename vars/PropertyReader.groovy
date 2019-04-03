@@ -1,22 +1,13 @@
-def call()
+class ProertyReader
 {
-		node 
-		{ 
-		// To get environmental value
-		def jenkins = Jenkins.instance
-    
-        //get job Item
-		def item = Jenkins.instance.getItemByFullName("${env.JOB_NAME}")
-		println "Job name - " + item
-		// get workspacePath for the job Item
-		def workspacePath = Jenkins.instance.getWorkspaceFor(item)
-		println "Workspace path - " + workspacePath
-    		
+	public ProertyReader()
+	{returnDatas()}
+	def returnDatas()
+	{
 		InputStream input = null;
 		Properties prop = new Properties();
-		println"workspace path is "+workspace
-		input = new FileInputStream(workspace.toString()+"\\pipelineJob.properties");
+		input = new FileInputStream("D:\\Jenkins\\pipeline.properties");
 		prop.load(input);
 		return prop	 
-        }
+	}
 }
