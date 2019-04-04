@@ -46,6 +46,9 @@ def VmPowerOff(VmName,Network)
 @NonCPS
 def VmRevert(VmName,Network,Snapshot)
 	{
+	echo "${VmName} is vm name"
+	echo "${Network} is vm Network"
+	echo "${Snapshot} is vm Snapshot"
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: snapshot, vm: VmName], serverName: Network
 	echo "${VmName} is Reverted to ${snapshot} - Snapshot"
 	}
