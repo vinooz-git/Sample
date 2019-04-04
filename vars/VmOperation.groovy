@@ -16,7 +16,6 @@ if (file.exists() && file.isFile()) {
 String VMList
 println"Vm list is "+VMList
 
-@NonCPS
 def VmPowerOn()
 	{
 	VMList = config.VmOperation.PowerOnMachine.VmName;
@@ -29,13 +28,13 @@ def VmPowerOn()
 	echo "${VmName} is Switched ON"
 	  }
 	}
-@NonCPS
+
 def VmPowerOff()
 	{
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	echo "${VmName} is Switched Off"
 	}
-@NonCPS
+
 def VmRevert()
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: snapshot, vm: VmName], serverName: Network
