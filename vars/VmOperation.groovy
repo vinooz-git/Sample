@@ -5,6 +5,7 @@ def call()
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv")
 if (file.exists() && file.isFile()) {
     String[] lines = file.text.split('\n')
+	println"New Line is "+ lines[0]
     List<String[]> rows = lines.collect {
         it.split(',')
     }
