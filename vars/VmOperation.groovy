@@ -6,7 +6,7 @@ def file = new File("D:\\Jenkins\\VmOperationDetails.csv")
 if (file.exists() && file.isFile()) 
 {
     String[] lines = file.text.split('\n')
-	for(int i =1; i<=lines.size(); i++)
+	for(int i =1; i<lines.size(); i++)
 	{
 		def row = lines[i];
 		String[] rowvalues = row.split(',');
