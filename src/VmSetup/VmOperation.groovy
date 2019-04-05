@@ -1,6 +1,5 @@
 import com.cloudbees.groovy.cps.NonCPS
 import groovy.util.XmlSlurper
-package VmSetup
 def call() 
 {
 	node
