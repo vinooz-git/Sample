@@ -1,4 +1,4 @@
-package VmSetup
+import VmSetup.VmOperation
 def call() 
 {
  node 
