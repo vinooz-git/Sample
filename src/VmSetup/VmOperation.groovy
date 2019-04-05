@@ -35,22 +35,22 @@ def file = new File("D:\\Jenkins\\VmOperationDetails.csv")
  {
  echo "Exception Occurs, The Csv File not in Valid format"
  }
-}
-@NonCPS
+
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
 	echo "${VmName} is Reverted to ${snapshot} - Snapshot"
 	}
-@NonCPS
+
 def VmPowerOn(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: VmName], serverName: Network
 	echo "${VmName} is Switched ON"
 	}
-@NonCPS
+
 def VmPowerOff(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	echo "${VmName} is Switched Off"
 	}
+}
