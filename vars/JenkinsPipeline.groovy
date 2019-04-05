@@ -1,11 +1,10 @@
-import VmSetup.VmOperation
 def call() 
 {
  node 
   {
     stage('VmSetup') 
 	{
-      def methodcall = new VmSetup.VmOperation()
+      def methodcall = new VmSetup.VmOperation
 	  methodcall.VmOperationCall()
 	  echo "Vm operations completed"
     }

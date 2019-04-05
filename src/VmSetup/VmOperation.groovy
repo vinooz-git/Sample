@@ -1,10 +1,8 @@
 package VmSetup
-class VmOperation
+def VmOperationCall()
 {
-	def VmOperationCall()
-	{
-	println"Vm operation Method working fine";
-	}
+println"Vm operation Method working fine";
+}
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
 
 def VmRevert(VmName,Network,Snapshot)
@@ -24,4 +22,3 @@ def VmPowerOff(VmName,Network)
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	echo "${VmName} is Switched Off"
 	}
-}
