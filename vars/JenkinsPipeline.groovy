@@ -5,7 +5,7 @@ def call()
   {
     stage('VmSetup') 
 	{
-      VmOperation()
+      new VmOperation()
 	  echo "Vm operations completed"
     }
     stage('BuildDownload')
