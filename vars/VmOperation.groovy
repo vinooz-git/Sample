@@ -11,17 +11,19 @@ if (file.exists() && file.isFile())
 		def row = lines[i];
 		String[] rowvalues = row.split(',');
 		println"Current row values :"+row
-		if(rowvalues[0].equalsIgnoreCase("VmRevert"))
+		def Action = rowvalues[0].trim(); def VmName = rowvalues[1].trim();
+		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
+		if(Action.equalsIgnoreCase("VmRevert"))
 			{
-				VmRevert(rowvalues[1],rowvalues[2],rowvalues[3].trim())
+				VmRevert(VmName,Network,Snapshot)
 			}
-		if(rowvalues[0].equalsIgnoreCase("VmPowerOn"))
+		if(Action.equalsIgnoreCase("VmPowerOn"))
 			{
-				VmPowerOn(rowvalues[1],rowvalues[2])
+				VmPowerOn(VmName,Network)
 			}
-		if(rowvalues[0].equalsIgnoreCase("VmPowerOff"))
+		if(Action.equalsIgnoreCase("VmPowerOff"))
 			{
-				VmPowerOff(rowvalues[1],rowvalues[2])
+				VmPowerOff(VmName,Network)
 			}
 	}
 } 
