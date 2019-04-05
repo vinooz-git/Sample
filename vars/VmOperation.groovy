@@ -32,6 +32,12 @@ else
 
 }
 @NonCPS
+def VmRevert(VmName,Network,Snapshot)
+	{
+	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
+	echo "${VmName} is Reverted to ${snapshot} - Snapshot"
+	}
+@NonCPS
 def VmPowerOn(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: VmName], serverName: Network
@@ -42,13 +48,4 @@ def VmPowerOff(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	echo "${VmName} is Switched Off"
-	}
-@NonCPS
-def VmRevert(VmName,Network,Snapshot)
-	{
-	echo "${VmName} is vm name"
-	echo "${Network} is vm Network"
-	echo "${Snapshot} is vm Snapshot"
-	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: snapshot, vm: VmName], serverName: Network
-	echo "${VmName} is Reverted to ${snapshot} - Snapshot"
 	}
