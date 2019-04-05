@@ -5,8 +5,8 @@ def call()
     stage('VmSetup') 
 	{
 	  def propertyFileLoc = "D:\\Jenkins\\VmOperationDetails.csv"
-      def methodcall = new VmSetup.VmOperation(propertyFileLoc)
-	  methodcall.VMOperationCall()
+      def methodcall = new VmSetup.VmOperation()
+	  methodcall.VMOperationCall(propertyFileLoc)
 	  echo "Vm operations completed"
     }
     stage('BuildDownload')
