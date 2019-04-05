@@ -34,6 +34,9 @@ else
 @NonCPS
 def VmRevert(VmName,Network,Snapshot)
 	{
+	echo "${Snapshot} is th snapshot name"
+	echo "${VmName} is th VM NAME"
+	echo "${Network} is the Network"
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
 	echo "${VmName} is Reverted to ${snapshot} - Snapshot"
 	}
