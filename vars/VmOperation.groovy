@@ -13,7 +13,7 @@ if (file.exists() && file.isFile())
 		println"Current row values :"+row
 		if(rowvalues[0].equalsIgnoreCase("VmRevert"))
 			{
-				VmRevert(rowvalues[1],rowvalues[2],rowvalues[3])
+				VmRevert(rowvalues[1],rowvalues[2],rowvalues[3].trim())
 			}
 		if(rowvalues[0].equalsIgnoreCase("VmPowerOn"))
 			{
