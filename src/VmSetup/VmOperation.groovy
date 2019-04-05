@@ -4,7 +4,7 @@ import groovy.util.XmlSlurper
 class VmOperation
 {
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
-  
+  println"Vm operatioin Method working fine"
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
