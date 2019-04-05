@@ -1,10 +1,10 @@
 package VmSetup
 class VmOperation
 {
-public VmOperation()
-{
-println"Vm operation Method working fine";
-}
+	def VmOperationCall()
+	{
+	println"Vm operation Method working fine";
+	}
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
 
 def VmRevert(VmName,Network,Snapshot)
