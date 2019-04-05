@@ -1,10 +1,12 @@
 package VmSetup
-import com.cloudbees.groovy.cps.NonCPS
-import groovy.util.XmlSlurper
 class VmOperation
 {
-def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
+public VmOperation()
+{
 println"Vm operation Method working fine";
+}
+def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
+
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
