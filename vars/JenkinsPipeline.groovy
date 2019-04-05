@@ -5,7 +5,7 @@ def call()
     stage('VmSetup') 
 	{
       def methodcall = new VmSetup.VmOperation()
-	  methodcall.VmOperationCall()
+	  methodcall.VMOperationCall()
 	  echo "Vm operations completed"
     }
     stage('BuildDownload')

@@ -1,5 +1,6 @@
 package VmSetup
-
+def VMOperationCall()
+{
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
   if (file.exists() && file.isFile()) 
   {
@@ -32,8 +33,7 @@ def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
  {
  echo "Exception Occurs, The Csv File not in Valid format"
  }
-
-
+}
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
