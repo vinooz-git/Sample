@@ -1,6 +1,6 @@
+package VmSetup
 import com.cloudbees.groovy.cps.NonCPS
 import groovy.util.XmlSlurper
-package VmSetup
 class VmOperation
 {
 	node
