@@ -8,13 +8,16 @@ def call()
 		def jenkins = Jenkins.instance
 		 
 		def item = Jenkins.instance.getItemByFullName("${env.JOB_NAME}")
-		 
+		println"new item"+item
+		println"new item Job name is ${env.JOB_NAME}"
 		def workspacePath = Jenkins.instance.getWorkspaceFor(item)
 		
 		println "Workspace path - " + workspacePath
 		
 		println "Workspace new Path ${WORKSPACE}"
 		println "JENKINS_HOME new Path ${JENKINS_HOME}"
+		println "JOB_NAME new Path ${JOB_NAME}"
+		println "JOB_BASE_NAME new Path ${JOB_BASE_NAME}"
 	}
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv")
   if (file.exists() && file.isFile()) 
