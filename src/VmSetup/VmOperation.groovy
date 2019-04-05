@@ -1,7 +1,8 @@
 package VmSetup
-def VMOperationCall()
+
+def VMOperationCall(def propertyFileLoc)
 {
-def file = new File("D:\\Jenkins\\VmOperationDetails.csv");
+def file = new File(propertyFileLoc);
   if (file.exists() && file.isFile()) 
   {
     String[] lines = file.text.split('\n')
