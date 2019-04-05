@@ -4,13 +4,17 @@ def call()
 {
 	node
 	{
-		//get Jenkins instance
+		 
 		def jenkins = Jenkins.instance
-		//get job Item
+		 
 		def item = Jenkins.instance.getItemByFullName("${env.JOB_NAME}")
-		// get workspacePath for the job Item
+		 
 		def workspacePath = Jenkins.instance.getWorkspaceFor(item)
+		
 		println "Workspace path - " + workspacePath
+		
+		println "Workspace new Path ${WORKSPACE}"
+		println "JENKINS_HOME new Path ${JENKINS_HOME}"
 	}
 def file = new File("D:\\Jenkins\\VmOperationDetails.csv")
   if (file.exists() && file.isFile()) 
@@ -26,17 +30,17 @@ def file = new File("D:\\Jenkins\\VmOperationDetails.csv")
 		if(Action.equalsIgnoreCase("VmRevert"))
 			{
 				VmRevert(VmName,Network,Snapshot)
-				sleep 20;
+				sleep 10;
 			}
 		if(Action.equalsIgnoreCase("VmPowerOn"))
 			{
 				VmPowerOn(VmName,Network)
-				sleep 20;
+				sleep 10;
 			}
 		if(Action.equalsIgnoreCase("VmPowerOff"))
 			{
 				VmPowerOff(VmName,Network)
-				sleep 20;
+				sleep 10;
 			}
 	}
   } 
