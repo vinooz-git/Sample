@@ -2,6 +2,7 @@ package VmSetup
 
 def VMOperationCall(def propertyFileLoc)
 {
+def tasks = [:]
 def file = new File(propertyFileLoc);
   if (file.exists() && file.isFile()) 
   {
@@ -13,6 +14,7 @@ def file = new File(propertyFileLoc);
 		//println"Current row values :"+row
 		def Action = rowvalues[0].trim(); def VmName = rowvalues[1].trim();
 		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
+		tasks["node_" + VmName] = {
 		if(Action.equalsIgnoreCase("VmRevert"))
 			{
 				VmRevert(VmName,Network,Snapshot)
@@ -28,7 +30,9 @@ def file = new File(propertyFileLoc);
 				VmPowerOff(VmName,Network)
 				sleep 10;
 			}
+		}
 	}
+	parallel tasks;
   } 
  else
  {

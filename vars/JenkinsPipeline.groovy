@@ -4,15 +4,16 @@ def call()
   {
     stage('VmSetup') 
 	{
-	def PWD = pwd();
-	println"Directory path :"+PWD
-	 // def propertyFileLoc = "D:\\Jenkins\\VmOperationDetails.csv"
-     //def methodcall = new VmSetup.VmOperation()
-	//  methodcall.VMOperationCall(propertyFileLoc)
-	  //echo "Vm operations completed"
+	def propertyFileLoc = "D:\\Jenkins\\VmOperationDetails.csv"
+    def methodcall = new VmSetup.VmOperation()
+	methodcall.VMOperationCall(propertyFileLoc)
+	echo "Vm operations completed"
     }
     stage('BuildDownload')
 	{
+	def methodcall = new BuildLibrary.BuildOperation()
+	methodcall.BuildOperationCall(propertyFileLoc)
+	
 	node('pa-tst4-w7') 
 	{
 	}
