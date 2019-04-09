@@ -1,9 +1,13 @@
 package VmSetup
+import org.ini4j.*;
 
 def VMOperationCall(def propertyFileLoc)
 {
 def tasks = [:]
-def file = new File(propertyFileLoc);
+Wini ini = new Wini(new File(propertyFileLoc));
+def server = ini.get("database", "server");
+println " Server :"+server
+/*
   if (file.exists() && file.isFile()) 
   {
     String[] lines = file.text.split('\n')
@@ -54,5 +58,6 @@ def VmPowerOn(VmName,Network)
 def VmPowerOff(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
-	echo "${VmName} is Switched Off"
+	echo "${VmName} is Switched Off" */
 	}
+	
