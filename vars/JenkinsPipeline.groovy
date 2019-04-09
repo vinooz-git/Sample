@@ -11,12 +11,12 @@ def call()
     }
     stage('BuildDownload')
 	{
-	def methodcall = new BuildLibrary.BuildOperation()
-	methodcall.BuildOperationCall(propertyFileLoc)
-	
-	node('pa-tst4-w7') 
-	{
-	}
+	//def methodcall = new BuildLibrary.BuildOperation()
+	//def nodeName = "pa-tst4-w7"
+	//	node(nodeName) 
+	//	{
+	//	methodcall.BuildOperationCall(propertyFileLoc)
+	//	}
     echo "Test Stage Completed"
     }
 	stage('Script Extraction')
