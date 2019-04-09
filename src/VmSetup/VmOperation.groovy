@@ -4,8 +4,10 @@ import org.ini4j.*;
 def VMOperationCall(def propertyFileLoc)
 {
 def tasks = [:]
-Wini ini = new Wini(new File(propertyFileLoc));
-def server = ini.get("database", "server");
+Ini ini = new Ini(new File(filename));
+java.util.prefs.Preferences prefs = new IniPreferences(ini);
+System.out.println("grumpy/homePage: " + prefs.node("grumpy").get("homePage", null));
+def server = prefs.node("database").get("server", null);
 println " Server :"+server
 /*
   if (file.exists() && file.isFile()) 
