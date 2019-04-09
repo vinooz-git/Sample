@@ -42,7 +42,7 @@ def file = new File(propertyFileLoc);
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
-	echo "${VmName} is Reverted to ${snapshot} - Snapshot"
+	echo "${VmName} is Reverted to ${Snapshot} - Snapshot"
 	}
 
 def VmPowerOn(VmName,Network)
