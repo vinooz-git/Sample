@@ -11,7 +11,7 @@ def file = new File(propertyFileLoc);
 	{
 		def row = lines[i];
 		String[] rowvalues = row.split(',');
-		//println"Current row values :"+row
+		println"Current row values :"+row
 		def Action = rowvalues[0].trim(); def VmName = rowvalues[1].trim();
 		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
 		tasks["node_" + VmName] = {
