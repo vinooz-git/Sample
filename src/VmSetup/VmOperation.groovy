@@ -15,6 +15,7 @@ def file = new File(propertyFileLoc);
 		def Action = rowvalues[0].trim(); def VmName = rowvalues[1].trim();
 		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
 		tasks["node_" + VmName] = {
+		node("master"){
 		if(Action.equalsIgnoreCase("VmRevert"))
 			{
 				VmRevert(VmName,Network,Snapshot)
@@ -30,6 +31,7 @@ def file = new File(propertyFileLoc);
 				VmPowerOff(VmName,Network)
 				sleep 10;
 			}
+		 }
 		}
 	}
 	parallel tasks;
