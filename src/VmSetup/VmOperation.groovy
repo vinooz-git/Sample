@@ -10,9 +10,10 @@ def file = new File(propertyFileLoc);
 	for(int i =1; i<lines.size(); i++)
 	{
 		def row = lines[i];
+		def Action = []
 		String[] rowvalues = row.split(',');
-		println"Current row values :"+row
-		def Action = rowvalues[0].trim(); def VmName = rowvalues[1].trim();
+		//println"Current row values :"+row
+		def Action = rowvalues[0].split('-'); def VmName = rowvalues[1].trim();
 		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
 		tasks["node_" + VmName] = {
 		if(Action.contains("VmPowerOff"))
