@@ -1,3 +1,8 @@
+/*
+Scope : Jenkins CI Pipeine Template for  all Project
+Parameters :
+  propertyFileLoc - Project pipeline Property file location  
+*/
 def call() 
 {
  node 
@@ -27,6 +32,5 @@ def call()
 	{
     
     }
-	
   }
 }

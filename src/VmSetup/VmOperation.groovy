@@ -1,8 +1,17 @@
+/*
+Scope : Perform VM operations - PowerOFF/ON, Revert based on Property file details
+Parameters :
+  propertyFileLoc - Project pipeline Property file 
+*/
 package VmSetup
 
 def VMOperationCall(def propertyFileLoc)
 {
-def tasks = [:]
+//PropertyFile Keywords and given variables should be matched
+def poweroff = "VmPowerOff"
+def poweron = "VmPowerOn"    
+def revert = "VmRevert"
+def tasks = [:]                                           //Empty map 
 def file = new File(propertyFileLoc);
   if (file.exists() && file.isFile()) 
   {
@@ -11,30 +20,28 @@ def file = new File(propertyFileLoc);
 	{
 		def row = lines[i];
 		String[] rowvalues = row.split(',');
-		println"Current row values :"+row
-		println"Current values :"+rowvalues[0]
 		def Action = rowvalues[0].trim(); 
-		if(Action.contains("VmPowerOff")||Action.contains("VmRevert")||Action.contains("VmPowerOn"))
+		if(Action.contains(poweroff)||Action.contains(revert)||Action.contains(poweron))
 		{
-		def VmName = rowvalues[1].trim();
-		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
-		tasks["node_" + VmName] = {
-		if(Action.contains("VmPowerOff"))
-			{
-				VmPowerOff(VmName,Network)
-				sleep 10;
+			def VmName = rowvalues[1].trim();
+			def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
+			tasks["node_" + VmName] = {                      //Parallel execution
+			if(Action.contains(poweroff))
+				{
+					VmPowerOff(VmName,Network)
+					sleep 10;
+				}
+			if(Action.contains(revert))
+				{
+					VmRevert(VmName,Network,Snapshot)
+					sleep 10;
+				}
+			if(Action.contains(poweron))
+				{
+					VmPowerOn(VmName,Network)
+					sleep 10;
+				}		
 			}
-		if(Action.contains("VmRevert"))
-			{
-				VmRevert(VmName,Network,Snapshot)
-				sleep 10;
-			}
-		if(Action.contains("VmPowerOn"))
-			{
-				VmPowerOn(VmName,Network)
-				sleep 10;
-			}		
-		}
 		}
 	}
 	parallel tasks;
