@@ -14,7 +14,7 @@ def file = new File(propertyFileLoc);
 		println"Current row values :"+row
 		println"Current values :"+rowvalues[0]
 		def Action = rowvalues[0].trim(); 
-		if(Action.contais("VmPowerOff")||Action.contais("VmRevert")||Action.contais("VmPowerOn"))
+		if(Action.contains("VmPowerOff")||Action.contais("VmRevert")||Action.contais("VmPowerOn"))
 		{
 		def VmName = rowvalues[1].trim();
 		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
