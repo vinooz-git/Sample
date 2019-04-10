@@ -11,7 +11,8 @@ def file = new File(propertyFileLoc);
 	{
 		def row = lines[i];
 		String[] rowvalues = row.split(',');
-		//println"Current row values :"+row
+		println"Current row values :"+row
+		println"Current values :"+rowvalues[0]
 		def Action = rowvalues[0].trim(); 
 		if(Action.contais("Vm"))
 		{
