@@ -13,11 +13,11 @@ def file = new File(propertyFileLoc);
 		String[] rowvalues = row.split(',');
 		//println"Current row values :"+row
 		def Action = rowvalues[0].trim(); 
-		tasks["node_" + VmName] = {
 		if(Action.contais("Vm"))
 		{
 		def VmName = rowvalues[1].trim();
 		def Network = rowvalues[2].trim(); def Snapshot = rowvalues[3].trim();
+		tasks["node_" + VmName] = {
 		if(Action.contains("VmPowerOff"))
 			{
 				VmPowerOff(VmName,Network)
