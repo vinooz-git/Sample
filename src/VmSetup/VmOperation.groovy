@@ -1,14 +1,9 @@
 package VmSetup
-@Grab(group='org.ini4j', module='ini4j', version='0.5.4')
-import org.ini4j.*;
 
 def VMOperationCall(def propertyFileLoc)
 {
-Ini ini = new Ini(new File("D:\\Jenkins\\CofigFile.ini"));
-println("My Name "+ini.get("owner", "Name"));
-println("Organization "+ini.get("owner", "organization"));
-//def content = readFile '..\\vars\\CofigFile.ini'
-/*
+def tasks = [:]
+def file = new File(propertyFileLoc);
   if (file.exists() && file.isFile()) 
   {
     String[] lines = file.text.split('\n')
@@ -59,6 +54,5 @@ def VmPowerOn(VmName,Network)
 def VmPowerOff(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
-	echo "${VmName} is Switched Off" */
+	echo "${VmName} is Switched Off"
 	}
-	
