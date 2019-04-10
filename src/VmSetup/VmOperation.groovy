@@ -5,7 +5,8 @@ import org.ini4j.*;
 def VMOperationCall(def propertyFileLoc)
 {
 Ini ini = new Ini(new File("D:\\Jenkins\\CofigFile.ini"));
-println(ini.get("owner", "Name"));
+println("My Name "+ini.get("owner", "Name"));
+println("Organization "+ini.get("owner", "organization"));
 //def content = readFile '..\\vars\\CofigFile.ini'
 /*
   if (file.exists() && file.isFile()) 
