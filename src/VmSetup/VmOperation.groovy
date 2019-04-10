@@ -1,14 +1,12 @@
 package VmSetup
+@Grab(group='org.ini4j', module='ini4j', version='0.5.4')
 import org.ini4j.*;
 
 def VMOperationCall(def propertyFileLoc)
 {
-def tasks = [:]
-Ini ini = new Ini(new File(filename));
-java.util.prefs.Preferences prefs = new IniPreferences(ini);
-System.out.println("grumpy/homePage: " + prefs.node("grumpy").get("homePage", null));
-def server = prefs.node("database").get("server", null);
-println " Server :"+server
+Ini ini = new Ini(new File("D:\\Jenkins\\CofigFile.ini"));
+System.out.println(ini.get("owner", "Name"));
+//def content = readFile '..\\vars\\CofigFile.ini'
 /*
   if (file.exists() && file.isFile()) 
   {
