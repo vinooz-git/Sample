@@ -13,8 +13,8 @@ def BuildOperationCall(def propertyFileLoc)
 	for(int i =0; i<lines.size(); i++)
 	{
 		def row = lines[i];
-		if(row.contains("ExecutionServer_List")){serverList = getServerList(row)}
-		for(int j =0; j<serverList.size();j++)
+		if(row.contains("ExecutionServer_List")){serverList = getServerList(row); println"serverList :"+serverList}
+		for(int j =0; j<serverList.size(); j++)
 		{
 			ServersBuildDownload["node_" + serverList[j]] = {
 			node(server) 
