@@ -8,9 +8,15 @@ def BuildOperationCall(def propertyFileLoc)
     String[] lines = file.text.split('\n')
 	for(int i =1; i<lines.size(); i++)
 	{
-		def row = lines[i];
-		if(row.contains("ProjectName")){String[] rowvalues = row.split('=');def projectname =rowvalues[1].trim();}
-		println"projectname : "+projectname
+		def  = lines[i];
+		println"Current Row :"+ row
+		if(row.contains("ProjectName"))
+		{
+		String[] rowvalues = row.split('=');
+		def projectname =rowvalues[1].trim();
+		println"project name : "+projectname;
+		}
+		
 		if(row.contains("BuildUrl"))
 		{
 		String[] rowvalues = row.split('=');
