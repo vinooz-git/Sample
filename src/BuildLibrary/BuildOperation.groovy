@@ -9,9 +9,9 @@ def BuildOperationCall(def propertyFileLoc)
 	for(int i =1; i<lines.size(); i++)
 	{
 		def row = lines[i];
-		if(row.contains(ProjectName)){String[] rowvalues = row.split('=');def projectname =rowvalues[1].trim();}
+		if(row.contains("ProjectName")){String[] rowvalues = row.split('=');def projectname =rowvalues[1].trim();}
 		println"projectname : "+projectname
-		if(row.contains(BuildUrl))
+		if(row.contains("BuildUrl"))
 		{
 		String[] rowvalues = row.split('=');
 		def BuildUrl = rowvalues[1].trim(); 
