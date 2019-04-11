@@ -23,7 +23,7 @@ def BuildOperationCall(def propertyFileLoc)
 		Filename = filenametemp[filenametemp.size()-1]
 		println"File Name :"+Filename
 		println"BuildUrl :"+BuildUrl
-		BuildCopyLoc = "C:\\"+projectname+"_Build"+Filename;
+		BuildCopyLoc = "C:\\"+projectname+"_Build\\"+Filename;
 		println"BuildCopyLoc :"+BuildCopyLoc
 		//Download latest build 
 		httpRequest ignoreSslErrors: true, outputFile: BuildCopyLoc, responseHandle: 'NONE', url: BuildUrl
