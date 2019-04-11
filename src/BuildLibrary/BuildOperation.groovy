@@ -12,25 +12,25 @@ def BuildOperationCall(def propertyFileLoc)
     String[] lines = file.text.split('\n')
 	for(int i =0; i<lines.size(); i++)
 	{
-		def row = lines[i];
-		if(row.contains("ExecutionServer_List")){serverList = getServerList(row); println"serverList :"+serverList}
+	 def row = lines[i];
+	 if(row.contains("ProjectName")){projectname = getProjectName(row);}	
+	 if(row.contains("BuildUrl")){BuildUrl = getBuildUrl(projectname,row)}
+	 if(row.contains("ExecutionServer_List"))
+	 {
+	   serverList = getServerList(row);
 		for(int j =0; j<serverList.size(); j++)
-		{
+			{
 			ServersBuildDownload["node_" + serverList[j]] = {
 			node(server) 
-			{
-			if(row.contains("ProjectName")){projectname = getProjectName(row);}		
-			if(row.contains("BuildUrl"))
-				{
-				BuildUrl = getBuildUrl(projectname,row)
-				//Download latest build 
-				httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+				{		
+				 //Download latest build 
+				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				}
+			  }		
 			}
-		 }
 	    } 
-		parallel ServersBuildDownload;
 	}
+	parallel ServersBuildDownload;
   }
 }
 
