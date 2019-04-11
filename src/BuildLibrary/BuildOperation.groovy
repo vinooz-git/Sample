@@ -44,7 +44,7 @@ def getServerList(row)
 	println"Row Value :"+ServerListTemp
 	if(ServerListTemp.contains(","))
 	{
-	serverList = ServerListTemp.split(',').trim();
+	serverList = ServerListTemp.trim().split(',');
 	println"serverList with "+serverList
 	}
 	else{
