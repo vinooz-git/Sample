@@ -42,13 +42,14 @@ def getServerList(row)
 	String[] rowvalues = row.split('=');
 	def ServerListTemp = rowvalues[1]
 	println"Row Value :"+ServerListTemp
-	if(ServerListTemp.contains(','))
+	if(ServerListTemp.contains(","))
 	{
 	serverList = ServerListTemp.split(',');
 	println"serverList with "+serverList
 	}
 	else{
 	serverList = ServerListTemp
+	println"Server LIST :"+serverList
 	}
   return serverList
 }
