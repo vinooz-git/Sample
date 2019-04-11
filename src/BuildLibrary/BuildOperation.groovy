@@ -64,8 +64,8 @@ def getBuildUrl(projectname,row)
 	def BuildUrl = rowvalues[1].trim(); 
 	buildCmd.add(BuildUrl);
 	String[] filenametemp = BuildUrl.split('/');
-	def def Filename = filenametemp[filenametemp.size()-1]
-	BuildCopyLoc = "C:\\"+projectname+"_Build\\"+Filename;  //Build download Location 
+	def Filename = filenametemp[filenametemp.size()-1]
+	def BuildCopyLoc = "C:\\"+projectname+"_Build\\"+Filename;  //Build download Location 
 	buildCmd.add(BuildCopyLoc);
   return buildCmd
 }
