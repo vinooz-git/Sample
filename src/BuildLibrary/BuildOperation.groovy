@@ -28,7 +28,8 @@ def BuildOperationCall(def propertyFileLoc)
 				}
 			}
 		 }
-	    } parallel ServersBuildDownload;
+	    } 
+		parallel ServersBuildDownload;
 	}
   }
 }
