@@ -5,6 +5,7 @@ Parameters :
 */
 def call() 
 {
+ def propertyFileLoc = "D:\\Jenkins\\JobConfig.csv"
  node 
   {
     stage('VmSetup') 
