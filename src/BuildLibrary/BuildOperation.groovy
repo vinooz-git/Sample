@@ -38,7 +38,7 @@ def BuildOperationCall(def propertyFileLoc)
 
 def getServerList(row)
 {
-	String[] serverList = null;
+	def serverList = [];
 	String[] rowvalues = row.split('=');
 	def ServerListTemp = rowvalues[1]
 	println"Row Value :"+ServerListTemp
@@ -48,7 +48,7 @@ def getServerList(row)
 	println"serverList with "+serverList
 	}
 	else{
-	serverList = ServerListTemp.toString()
+	serverList.add(ServerListTemp);
 	println"Server LIST :"+serverList
 	}
   return serverList
