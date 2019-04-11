@@ -10,7 +10,6 @@ def call()
   {
     stage('VmSetup') 
 	{
-	def propertyFileLoc = "D:\\Jenkins\\JobConfig.csv"
     //def methodcall = new VmSetup.VmOperation()
 	//methodcall.VMOperationCall(propertyFileLoc)
 	echo "Vm operations completed"
