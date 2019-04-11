@@ -3,9 +3,7 @@ package BuildLibrary
 def BuildOperationCall(def propertyFileLoc)
 {
   def projectname = null;
-  def BuildUrl = null;
-  def BuildCopyLoc = null;
-  def Filename = null;
+  def BuildUrl = [];
   def file = new File(propertyFileLoc);
   if (file.exists() && file.isFile()) 
   {
@@ -13,21 +11,61 @@ def BuildOperationCall(def propertyFileLoc)
 	for(int i =0; i<lines.size(); i++)
 	{
 		def row = lines[i];
-		println"Current Row :"+ row
-		if(row.contains("ProjectName")){String[] rowvalues = row.split('=');projectname =rowvalues[1].trim();println"project name : "+projectname;}		
+		if(row.contains("ExecutionServer_List"))
+		{
+		String[] serverList = getServerList(row)
+		println"Server List "+serverList
+		}
+		if(row.contains("ProjectName"))
+		{
+		projectname = getProjectName(row)
+		println"projectname "+projectname
+		}		
 		if(row.contains("BuildUrl"))
 		{
-		String[] rowvalues = row.split('=');
-		BuildUrl = rowvalues[1].trim(); 
-		String[] filenametemp = BuildUrl.split('/');
-		Filename = filenametemp[filenametemp.size()-1]
-		println"File Name :"+Filename
-		println"BuildUrl :"+BuildUrl
-		BuildCopyLoc = "C:\\"+projectname+"_Build\\"+Filename;
-		println"BuildCopyLoc :"+BuildCopyLoc
+		BuildUrl = getBuildUrl(projectname,row)
 		//Download latest build 
-		httpRequest ignoreSslErrors: true, outputFile: BuildCopyLoc, responseHandle: 'NONE', url: BuildUrl
+		httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 		}
 	}
   }
+}
+
+def getServerList(row)
+{
+	String[] serverList = null;
+	String[] rowvalues = row.split('=');
+	def ServerListTemp = rowvalues[1]
+	if(ServerListTemp.contains(','))
+	{
+	serverList = ServerListTemp.spli(',');
+	}
+	else
+	{
+	serverList = ServerListTemp
+	}
+	println"Sever List :"+serverList
+  return serverList
+}
+
+def getProjectName(row)
+{
+	def projectname = null;
+	String[] rowvalues = row.split('=');
+	projectname =rowvalues[1].trim();
+	println"project name : "+projectname;
+  return projectname
+}
+
+def getBuildUrl(projectname,row)
+{	
+	def buildCmd = [];
+	String[] rowvalues = row.split('=');
+	def BuildUrl = rowvalues[1].trim(); 
+	buildCmd.add(BuildUrl);
+	String[] filenametemp = BuildUrl.split('/');
+	def def Filename = filenametemp[filenametemp.size()-1]
+	BuildCopyLoc = "C:\\"+projectname+"_Build\\"+Filename;  //Build download Location 
+	buildCmd.add(BuildCopyLoc);
+  return buildCmd
 }
