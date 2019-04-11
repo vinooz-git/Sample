@@ -23,10 +23,10 @@ def BuildOperationCall(def propertyFileLoc)
 		for(int j =0; j<serverList.size(); j++)
 			{
 			ServersBuildDownload["node_" + serverList[j]] = {
-			node(server) 
+			node(serverList[j]) 
 				{		
 				 //Download latest build 
-				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+				// httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				}
 			  }		
 		   }
@@ -48,7 +48,7 @@ def getServerList(row)
 	println"serverList with "+serverList
 	}
 	else{
-	serverList.add(ServerListTemp);
+	serverList.add(ServerListTemp.trim());
 	println"Server LIST :"+serverList
 	}
   return serverList
