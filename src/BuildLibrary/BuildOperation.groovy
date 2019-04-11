@@ -16,16 +16,12 @@ def BuildOperationCall(def propertyFileLoc)
 		String[] serverList = getServerList(row)
 		println"Server List "+serverList
 		}
-		if(row.contains("ProjectName"))
-		{
-		projectname = getProjectName(row)
-		println"projectname "+projectname
-		}		
+		if(row.contains("ProjectName")){projectname = getProjectName(row)}		
 		if(row.contains("BuildUrl"))
 		{
-		BuildUrl = getBuildUrl(projectname,row)
+		//BuildUrl = getBuildUrl(projectname,row)
 		//Download latest build 
-		httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+		//httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 		}
 	}
   }
@@ -38,7 +34,7 @@ def getServerList(row)
 	def ServerListTemp = rowvalues[1]
 	if(ServerListTemp.contains(','))
 	{
-	serverList = ServerListTemp.spli(',');
+	serverList = ServerListTemp.split(',');
 	}
 	else
 	{
@@ -53,7 +49,6 @@ def getProjectName(row)
 	def projectname = null;
 	String[] rowvalues = row.split('=');
 	projectname =rowvalues[1].trim();
-	println"project name : "+projectname;
   return projectname
 }
 
