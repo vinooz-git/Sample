@@ -18,6 +18,8 @@ def BuildOperationCall(def propertyFileLoc)
 	 if(row.contains("ExecutionServer_List"))
 	 {
 	   serverList = getServerList(row);
+	   println"serverList :"+serverList
+	   println"size: "+serverList.size()
 		for(int j =0; j<serverList.size(); j++)
 			{
 			ServersBuildDownload["node_" + serverList[j]] = {
