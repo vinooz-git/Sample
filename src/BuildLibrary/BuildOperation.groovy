@@ -27,7 +27,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				}
 			  }		
-			}
+		   }
 	    } 
 	}
 	parallel ServersBuildDownload;
