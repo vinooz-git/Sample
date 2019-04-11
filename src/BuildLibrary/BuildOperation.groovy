@@ -14,9 +14,9 @@ def BuildOperationCall(def propertyFileLoc)
 	{
 		def row = lines[i];
 		if(row.contains("ExecutionServer_List")){serverList = getServerList(row)}
-		for(server in serverList)
+		for(int i =0; i<serverList.size();i++)
 		{
-			ServersBuildDownload["node_" + server] = {
+			ServersBuildDownload["node_" + serverList[i]] = {
 			node(server) 
 			{
 			if(row.contains("ProjectName")){projectname = getProjectName(row);}		
