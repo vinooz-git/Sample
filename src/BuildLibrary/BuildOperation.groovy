@@ -6,7 +6,7 @@ def BuildOperationCall(def propertyFileLoc)
   if (file.exists() && file.isFile()) 
   {
     String[] lines = file.text.split('\n')
-	for(int i =1; i<lines.size(); i++)
+	for(int i =0; i<lines.size(); i++)
 	{
 		def row = lines[i];
 		println"Current Row :"+ row
