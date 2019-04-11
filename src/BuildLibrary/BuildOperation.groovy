@@ -8,7 +8,7 @@ def BuildOperationCall(def propertyFileLoc)
     String[] lines = file.text.split('\n')
 	for(int i =1; i<lines.size(); i++)
 	{
-		def  = lines[i];
+		def row = lines[i];
 		println"Current Row :"+ row
 		if(row.contains("ProjectName"))
 		{
