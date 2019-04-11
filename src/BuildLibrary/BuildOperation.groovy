@@ -48,7 +48,7 @@ def getServerList(row)
 	println"serverList with "+serverList
 	}
 	else{
-	serverList = ServerListTemp
+	serverList = ServerListTemp.toString()
 	println"Server LIST :"+serverList
 	}
   return serverList
