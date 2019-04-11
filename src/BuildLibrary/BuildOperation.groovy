@@ -41,8 +41,15 @@ def getServerList(row)
 	String[] serverList = null;
 	String[] rowvalues = row.split('=');
 	def ServerListTemp = rowvalues[1]
-	if(ServerListTemp.contains(',')){serverList = ServerListTemp.split(',');}
-	else{serverList = ServerListTemp}
+	println"Row Value :"+ServerListTemp
+	if(ServerListTemp.contains(','))
+	{
+	serverList = ServerListTemp.split(',');
+	println"serverList with "+serverList
+	}
+	else{
+	serverList = ServerListTemp
+	}
   return serverList
 }
 
