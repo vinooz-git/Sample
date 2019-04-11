@@ -4,25 +4,31 @@ def BuildOperationCall(def propertyFileLoc)
 {
   def projectname = null;
   def BuildUrl = [];
+  String[] serverList = null;
   def file = new File(propertyFileLoc);
+  def ServersBuildDownload = [:]
   if (file.exists() && file.isFile()) 
   {
     String[] lines = file.text.split('\n')
 	for(int i =0; i<lines.size(); i++)
 	{
 		def row = lines[i];
-		if(row.contains("ExecutionServer_List"))
+		if(row.contains("ExecutionServer_List")){serverList = getServerList(row)}
+		for(server in serverList)
 		{
-		String[] serverList = getServerList(row)
-		println"Server List "+serverList
-		}
-		if(row.contains("ProjectName")){projectname = getProjectName(row)}		
-		if(row.contains("BuildUrl"))
-		{
-		//BuildUrl = getBuildUrl(projectname,row)
-		//Download latest build 
-		//httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
-		}
+			ServersBuildDownload["node_" + server] = {
+			node(server) 
+			{
+			if(row.contains("ProjectName")){projectname = getProjectName(row);}		
+			if(row.contains("BuildUrl"))
+				{
+				BuildUrl = getBuildUrl(projectname,row)
+				//Download latest build 
+				httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+				}
+			}
+		 }
+	    } parallel ServersBuildDownload;
 	}
   }
 }
@@ -32,15 +38,8 @@ def getServerList(row)
 	String[] serverList = null;
 	String[] rowvalues = row.split('=');
 	def ServerListTemp = rowvalues[1]
-	if(ServerListTemp.contains(','))
-	{
-	serverList = ServerListTemp.split(',');
-	}
-	else
-	{
-	serverList = ServerListTemp
-	}
-	println"Sever List :"+serverList
+	if(ServerListTemp.contains(',')){serverList = ServerListTemp.split(',');}
+	else{serverList = ServerListTemp}
   return serverList
 }
 
