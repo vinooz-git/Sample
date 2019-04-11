@@ -22,8 +22,10 @@ def BuildOperationCall(def propertyFileLoc)
 	   println"size: "+serverList.size()
 		for(int j =0; j<serverList.size(); j++)
 			{
-			ServersBuildDownload["node_" + serverList[j]] = {
-			node(serverList[j]) 
+			def nodeName = serverList[j]
+			println"Node Name : "+nodeName
+			ServersBuildDownload["node_" + nodeName] = {
+			node(nodeName) 
 				{		
 				 //Download latest build 
 				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
