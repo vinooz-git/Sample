@@ -5,6 +5,7 @@ def BuildOperationCall(def propertyFileLoc)
   def projectname = null;
   def BuildUrl = [];
   String[] serverList = null;
+  def BuildOutputLoc = null;
   def file = new File(propertyFileLoc);
   def ServersBuildDownload = [:]
   if (file.exists() && file.isFile()) 
@@ -14,7 +15,8 @@ def BuildOperationCall(def propertyFileLoc)
 	{
 	 def row = lines[i];
 	 if(row.contains("ProjectName")){projectname = getProjectName(row);}	
-	 if(row.contains("BuildUrl")){BuildUrl = getBuildUrl(projectname,row)}
+	 if(row.contains("BuildOutputlocation")){BuildOutputLoc = getBuildOutLoc(row)}
+	 if(row.contains("BuildUrl")){BuildUrl = getBuildUrl(projectname,row,BuildOutputLoc)}
 	 if(row.contains("ExecutionServer_List"))
 	 {
 	   serverList = getServerList(row);
@@ -25,16 +27,22 @@ def BuildOperationCall(def propertyFileLoc)
 			node(nodeName) 
 				{		
 				 //Download latest build 
-				 //httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				 
 				 //Extract the Build
-				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: 'C:\\Pacs_Build\\8_1_0')])
-					
-				//Copy File and folder
-				//bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
+				 String[] Tempfoldername  = BuildUrl.get(2).split(".");
+				 def FoldefName = Tempfoldername[0];
+				 println"FoldefName :"+FoldefName
+				 def CopyFromFolder = BuildOutputLoc +"\"+FoldefName
+				 println"CopyFromFolder :"+CopyFromFolder
+				 def deleteFile = BuildOutputLoc +"\"+BuildUrl.get(2);
+				 //Copy File and folder
+				 //bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				 bat label: '', script: '(robocopy ${CopyFromFolder} ${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
 				
-				//Delete unwanted folders and files
-				bat label: '', script: '''DEL /F /Q /A C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD.zip RD /S /Q C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD'''
+				 //Delete unwanted folders and files
+				 bat label: '', script: '''DEL /F /Q /A ${deleteFile} RD /S /Q ${CopyFromFolder}'''
 				}
 			  }		
 		   }
@@ -70,18 +78,25 @@ def getProjectName(row)
   return projectname
 }
 
-def getBuildUrl(projectname,row)
+def getBuildOutLoc(row)
+{
+def outLoc = null;
+	String[] rowvalues = row.split('=');
+	outLoc =rowvalues[1].trim();
+  return outLoc
+}
+
+def getBuildUrl(projectname,row,buildOutLoc)
 {	
 	def buildCmd = [];
 	String[] rowvalues = row.split('=');
 	def BuildUrl = rowvalues[1].trim(); 
 	buildCmd.add(BuildUrl);
 	String[] filenametemp = BuildUrl.split('/');
-	def Filename = filenametemp[filenametemp.size()-1].replaceAll('%20'," ")
+	def Filename = filenametemp[filenametemp.size()-1]
 	println"Filename is :"+Filename
-	def BuildCopyLoc = "C:\\"+projectname+"_Build\\8_1_0\\"+Filename;  //Build download Location 
+	def BuildCopyLoc = buildOutLoc+"\\"+Filename;  //Build download Location 
 	buildCmd.add(BuildCopyLoc);
-	//String[] folder = Filename.split('.')
-	//buildCmd.add(folder[0])
+	buildCmd.add(Filename)
   return buildCmd
 }
