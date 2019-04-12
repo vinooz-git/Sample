@@ -30,7 +30,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 //httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				 
 				 //Extract the Build
-				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
+				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 println"name : "+BuildUrl.get(2);
 				 String[] Tempfoldername  = BuildUrl.get(2).split("[.]");
 				 println"Tempfoldername :"+Tempfoldername
