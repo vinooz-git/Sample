@@ -18,17 +18,17 @@ def BuildOperationCall(def propertyFileLoc)
 	 if(row.contains("ExecutionServer_List"))
 	 {
 	   serverList = getServerList(row);
-	   println"serverList :"+serverList
-	   println"size: "+serverList.size()
 		for(int j =0; j<serverList.size(); j++)
 			{
 			def nodeName = serverList[j]
-			println"Node Name : "+nodeName
 			ServersBuildDownload["node_" + nodeName] = {
 			node(nodeName) 
 				{		
 				 //Download latest build 
 				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+				 
+				 //Extract the Build
+				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: 'C:\\Pacs_Build\\8_1_0')])
 				}
 			  }		
 		   }
@@ -36,6 +36,8 @@ def BuildOperationCall(def propertyFileLoc)
 	}
 	parallel ServersBuildDownload;
   }
+  //Extract the Build 
+    
 }
 
 def getServerList(row)
@@ -43,15 +45,13 @@ def getServerList(row)
 	def serverList = [];
 	String[] rowvalues = row.split('=');
 	def ServerListTemp = rowvalues[1]
-	println"Row Value :"+ServerListTemp
+	//println"Row Value :"+ServerListTemp
 	if(ServerListTemp.contains(","))
 	{
 	serverList = ServerListTemp.trim().split(',');
-	println"serverList with "+serverList
 	}
 	else{
 	serverList.add(ServerListTemp.trim());
-	println"Server LIST :"+serverList
 	}
   return serverList
 }
@@ -72,7 +72,7 @@ def getBuildUrl(projectname,row)
 	buildCmd.add(BuildUrl);
 	String[] filenametemp = BuildUrl.split('/');
 	def Filename = filenametemp[filenametemp.size()-1]
-	def BuildCopyLoc = "C:\\"+projectname+"_Build\\"+Filename;  //Build download Location 
+	def BuildCopyLoc = "C:\\"+projectname+"_Build\\8_1_0\\"+Filename;  //Build download Location 
 	buildCmd.add(BuildCopyLoc);
   return buildCmd
 }
