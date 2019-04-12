@@ -75,7 +75,7 @@ def getBuildUrl(projectname,row)
 	println"Filename is :"+Filename
 	def BuildCopyLoc = "C:\\"+projectname+"_Build\\8_1_0\\"+Filename;  //Build download Location 
 	buildCmd.add(BuildCopyLoc);
-	String[] folder = Filename.split('.')
-	buildCmd.add(folder[0])
+	//String[] folder = Filename.split('.')
+	//buildCmd.add(folder[0])
   return buildCmd
 }
