@@ -34,7 +34,7 @@ def BuildOperationCall(def propertyFileLoc)
 				//bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
 				
 				//Delete unwanted folders and files
-				bat label: '', script: '''DEL /F /Q /A C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD.zip RD /S /Q C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD'''
+				bat label: '', script: '''DEL /F /Q /A C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD.zip RD /S /Q C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD'''
 				}
 			  }		
 		   }
