@@ -28,7 +28,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				 
 				 //Extract the Build
-				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: 'C:\\Pacs_Build\\8_1_0')])
+				 fileOperations([fileCopyOperation(excludes: '', flattenFiles: false, includes: 'C:\\Pacs_Build\\8_1_0\\IBM Merge PACS Server Software CD\\*', targetLocation: 'C:\\Pacs_Build\\8_1_0'), folderCopyOperation(destinationFolderPath: 'C:\\Pacs_Build\\8_1_0', sourceFolderPath: 'C:\\Pacs_Build\\8_1_0\\IBM Merge PACS Server Software CD\\*')])
 				}
 			  }		
 		   }
@@ -71,9 +71,11 @@ def getBuildUrl(projectname,row)
 	def BuildUrl = rowvalues[1].trim(); 
 	buildCmd.add(BuildUrl);
 	String[] filenametemp = BuildUrl.split('/');
-	def Filename = filenametemp[filenametemp.size()-1].replaceAll('%'," ")
+	def Filename = filenametemp[filenametemp.size()-1].replaceAll('%20'," ")
 	println"Filename is :"+Filename
 	def BuildCopyLoc = "C:\\"+projectname+"_Build\\8_1_0\\"+Filename;  //Build download Location 
 	buildCmd.add(BuildCopyLoc);
+	def folder = Filename.split('.')
+	buildCmd.add(folder[0])
   return buildCmd
 }
