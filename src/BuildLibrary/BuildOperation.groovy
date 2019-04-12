@@ -31,7 +31,8 @@ def BuildOperationCall(def propertyFileLoc)
 				 
 				 //Extract the Build
 				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
-				 String[] Tempfoldername  = BuildUrl.get(2).split(".");
+				 println"name : "+BuildUrl.get(2);
+				 String[] Tempfoldername  = BuildUrl.get(2).split("[.]");
 				 println"Tempfoldername :"+Tempfoldername
 				 println"Tempfoldername length :"+Tempfoldername.size()
 				 def FolderName = Tempfoldername[0];
