@@ -28,10 +28,10 @@ def BuildOperationCall(def propertyFileLoc)
 				 //httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				 
 				 //Extract the Build
-				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: 'C:\\Pacs_Build\\8_1_0')])
+				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: 'C:\\Pacs_Build\\8_1_0')])
 					
 				//Copy File and folder
-				fileOperations([fileCopyOperation(excludes: '', flattenFiles: false, includes: 'C:\\Pacs_Build\\8_1_0\\IBM Merge PACS Server Software CD\\*', targetLocation: 'C:\\Pacs_Build\\8_1_0'), folderCopyOperation(destinationFolderPath: 'C:\\Pacs_Build\\8_1_0', sourceFolderPath: 'C:\\Pacs_Build\\8_1_0\\IBM Merge PACS Server Software CD\\*')])				
+				fileOperations([fileCopyOperation(excludes: '', flattenFiles: false, includes: 'C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD\\**', targetLocation: 'C:\\Pacs_Build\\8_1_0'), folderCopyOperation(destinationFolderPath: 'C:\\Pacs_Build\\8_1_0', sourceFolderPath: 'C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD\\**')])				
 				}
 			  }		
 		   }
