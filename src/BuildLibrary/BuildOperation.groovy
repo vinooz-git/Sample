@@ -31,8 +31,10 @@ def BuildOperationCall(def propertyFileLoc)
 				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: 'C:\\Pacs_Build\\8_1_0')])
 					
 				//Copy File and folder
-				//fileOperations([fileCopyOperation(excludes: '', flattenFiles: false, includes: 'C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD\\**.*', targetLocation: 'C:\\Pacs_Build\\8_1_0')])				
-				bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				//bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				
+				//Delete unwanted folders and files
+				fileOperations([folderDeleteOperation('C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD'), fileDeleteOperation(excludes: '', includes: 'C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD.zip')])
 				}
 			  }		
 		   }
