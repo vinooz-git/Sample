@@ -27,11 +27,13 @@ def BuildOperationCall(def propertyFileLoc)
 			node(nodeName) 
 				{		
 				 //Download latest build 
-				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
+				 //httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				 
 				 //Extract the Build
 				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 String[] Tempfoldername  = BuildUrl.get(2).split(".");
+				 println"Tempfoldername :"+Tempfoldername
+				 println"Tempfoldername length :"+Tempfoldername.size()
 				 def FolderName = Tempfoldername[0];
 				 println"FolderName :"+ FolderName;
 				 def CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
@@ -39,10 +41,10 @@ def BuildOperationCall(def propertyFileLoc)
 				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
 				 //Copy File and folder
 				 //bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
-				 bat label: '', script: '(robocopy ${CopyFromFolder} ${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				 //bat label: '', script: '(robocopy ${CopyFromFolder} ${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
 				
 				 //Delete unwanted folders and files
-				 bat label: '', script: '''DEL /F /Q /A ${deleteFile} RD /S /Q ${CopyFromFolder}'''
+				// bat label: '', script: '''DEL /F /Q /A ${deleteFile} RD /S /Q ${CopyFromFolder}'''
 				}
 			  }		
 		   }
