@@ -31,18 +31,18 @@ def BuildOperationCall(def propertyFileLoc)
 				 
 				 String[] Tempfoldername  = BuildUrl.get(2).split("[.]");
 				 
-				 def FolderName = Tempfoldername[0];
+				 def FolderName = Tempfoldername[0].replaceAll("%20"," ");
 				 
 				 def CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
 				 println"CopyFromFolder :"+ CopyFromFolder;
 				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
 				 
 				 //Extract the Build
-				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: CopyFromFolder)])
+				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 
 			
 				 //Copy File and folder
-				 bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				 //bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
 				 bat label: '', script: '(robocopy ${CopyFromFolder} ${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
 				
 				 //Delete unwanted folders and files
