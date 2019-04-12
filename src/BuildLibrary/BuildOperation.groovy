@@ -38,12 +38,13 @@ def BuildOperationCall(def propertyFileLoc)
 				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
 				 
 				 //Extract the Build
-				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
+				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 
 			
 				 //Copy File and folder
 				 //bat label: '', script: '(robocopy C:\\PACS_build\\8_1_0\\IBMMergePACSServerSoftwareCD C:\\Pacs_Build\\8_1_0 /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
-				 bat label: '', script: '(robocopy ${CopyFromFolder} ${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				 //bat label: '', script: '(robocopy ${CopyFromFolder} ${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
+				 bat label: '', script: '(robocopy \${CopyFromFolder} \${BuildOutputLoc} /S /MT:100 /nfl /ndl > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0'
 				
 				 //Delete unwanted folders and files
 				 bat label: '', script: '''DEL /F /Q /A ${deleteFile} RD /S /Q ${CopyFromFolder}'''
