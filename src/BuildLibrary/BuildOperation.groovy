@@ -34,7 +34,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 String CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
 				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
 				 println"deleteFile path :"+deleteFile
-				 println"CopyFromFolder path :"+CopyFromFolder
+				 println"Delete folder path :"+CopyFromFolder
 				 //Extract the Build
 				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 
@@ -42,7 +42,8 @@ def BuildOperationCall(def propertyFileLoc)
 				 //bat label: '', script: "((robocopy \"${CopyFromFolder}\" ${BuildOutputLoc} /S /MT:100 > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0)"
 				 
 				 //Delete unwanted folders and files
-				 bat label: '', script: "(DEL /F /Q /A ${deleteFile} RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog.txt)"
+				 bat label: '', script: "(DEL /F /Q /A ${deleteFile} > C:\\Deletelog.txt)"
+				 bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
 				}
 			  }		
 		   }
