@@ -32,17 +32,17 @@ def BuildOperationCall(def propertyFileLoc)
 				 String[] Tempfoldername  = BuildUrl.get(2).split("[.]");
 				 String FolderName = Tempfoldername[0].replaceAll("%20"," ");
 				 String CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
-				 println"CopyFromFolder :"+ CopyFromFolder;
 				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
-				 
+				 println"deleteFile path :"+deleteFile
+				 println"CopyFromFolder path :"+CopyFromFolder
 				 //Extract the Build
-				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
+				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 
 				 //Copy File and folder /* This step only for PACS Server Setup*
-				 bat label: '', script: "((robocopy \"${CopyFromFolder}\" ${BuildOutputLoc} /S /MT:100 > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0)"
+				 //bat label: '', script: "((robocopy \"${CopyFromFolder}\" ${BuildOutputLoc} /S /MT:100 > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0)"
 				 
 				 //Delete unwanted folders and files
-				 bat label: '', script: "(DEL /F /Q /A ${deleteFile} RD /S /Q \"${CopyFromFolder}\")"
+				 bat label: '', script: "(DEL /F /Q /A ${deleteFile} RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog.txt)"
 				}
 			  }		
 		   }
@@ -94,7 +94,6 @@ def getBuildUrl(projectname,row,buildOutLoc)
 	buildCmd.add(BuildUrl);
 	String[] filenametemp = BuildUrl.split('/');
 	def Filename = filenametemp[filenametemp.size()-1]
-	println"Filename is :"+Filename
 	def BuildCopyLoc = buildOutLoc+"\\"+Filename;  //Build download Location 
 	buildCmd.add(BuildCopyLoc);
 	buildCmd.add(Filename)
