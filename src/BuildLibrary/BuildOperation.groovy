@@ -47,7 +47,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 //bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
 				 bat label: '', script: '''cd \"${BuildOutputLoc}"\
 				 del *.zip'''
-				 println"Script execution Completed";
+				 println"Script execution Completed"
 				}
 			  }		
 		   }
