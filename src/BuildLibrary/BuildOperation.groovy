@@ -42,7 +42,8 @@ def BuildOperationCall(def propertyFileLoc)
 				 //bat label: '', script: "((robocopy \"${CopyFromFolder}\" ${BuildOutputLoc} /S /MT:100 > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0)"
 				 
 				 //Delete unwanted folders and files
-				 bat label: '', script: "(DEL /F /Q /A \"${deleteFile}\" > C:\\Deletelog.txt)"
+				 //bat label: '', script: "(DEL /F /Q /A \"${deleteFile}\" > C:\\Deletelog.txt)"
+				 fileOperations([fileDeleteOperation(excludes: '', includes: 'C:\\PACS_build\\8_1_0\\*.zip')])
 				 bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
 				}
 			  }		
