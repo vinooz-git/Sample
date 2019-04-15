@@ -32,21 +32,17 @@ def BuildOperationCall(def propertyFileLoc)
 				 String[] Tempfoldername  = BuildUrl.get(2).split("[.]");
 				 String FolderName = Tempfoldername[0].replaceAll("%20"," ");
 				 String CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
-				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
-				 println"deleteFile path :"+deleteFile
-				 println"Delete folder path :"+CopyFromFolder
+				 def deleteFile = BuildOutputLoc +"\\*.zip"
+				 
 				 //Extract the Build
-				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
+				 fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 
 				 //Copy File and folder /* This step only for PACS Server Setup*
-				 //bat label: '', script: "((robocopy \"${CopyFromFolder}\" ${BuildOutputLoc} /S /MT:100 > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0)"
+				 bat label: '', script: "((robocopy \"${CopyFromFolder}\" ${BuildOutputLoc} /S /MT:100 > C:\\log.txt) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0)"
 				 
 				 //Delete unwanted folders and files
-				 //bat label: '', script: "(DEL /F /Q /A \"${deleteFile}\" > C:\\Deletelog.txt)"
-				 //fileOperations([fileDeleteOperation(excludes: '', includes: 'C:\\PACS_build\\8_1_0\\*.zip')])
-				 //bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
-				 String neFile = BuildOutputLoc+"\\*.zip"
-				 bat label: '', script: "(del ${neFile} > C:\\Deletelog1.txt)"
+				 bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
+				 bat label: '', script: "(del ${deleteFile} > C:\\Deletelog1.txt)"
 				}
 			  }		
 		   }
