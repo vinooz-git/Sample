@@ -31,9 +31,9 @@ def BuildOperationCall(def propertyFileLoc)
 				 
 				 String[] Tempfoldername  = BuildUrl.get(2).split("[.]");
 				 
-				 def FolderName = Tempfoldername[0].replaceAll("%20"," ");
+				 String FolderName = Tempfoldername[0].replaceAll("%20"," ");
 				 
-				 def CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
+				 String CopyFromFolder = BuildOutputLoc +"\\"+FolderName;
 				 println"CopyFromFolder :"+ CopyFromFolder;
 				 def deleteFile = BuildOutputLoc +"\\"+BuildUrl.get(2);
 				 
