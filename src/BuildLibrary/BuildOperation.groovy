@@ -39,7 +39,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 
 				 //Extract the Build
 				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
-				 String Script = "robocopy +"C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD"+" "+ BuildOutputLoc +" /S /MT:100 > C:\\log.txt ^& IF %ERRORLEVEL% LEQ 4 exit /B 0"
+				 String Script = "robocopy C:\\PACS_build\\8_1_0\\IBM Merge PACS Server Software CD" +" "+ BuildOutputLoc +" "/S /MT:100 > C:\\log.txt ^& IF %ERRORLEVEL% LEQ 4 exit /B 0"
 				 //Copy File and folder /* This step only for PACS Server Setup*
 				 bat label: '', script: Script
 				 
