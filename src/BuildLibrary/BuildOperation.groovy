@@ -45,8 +45,8 @@ def BuildOperationCall(def propertyFileLoc)
 				 //bat label: '', script: "(DEL /F /Q /A \"${deleteFile}\" > C:\\Deletelog.txt)"
 				 //fileOperations([fileDeleteOperation(excludes: '', includes: 'C:\\PACS_build\\8_1_0\\*.zip')])
 				 //bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
-				 
-				 bat label: '', script: "(cd \"${BuildOutputLoc}\" del *.zip > C:\\Deletelog1.txt)"
+				 String neFile = BuildOutputLoc+"\*.zip"
+				 bat label: '', script: "(del ${neFile} > C:\\Deletelog1.txt)"
 				 println"Script execution Completed"
 				}
 			  }		
