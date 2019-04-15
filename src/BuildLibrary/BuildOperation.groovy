@@ -41,7 +41,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 //fileOperations([fileUnZipOperation(filePath: BuildUrl.get(1), targetLocation: BuildOutputLoc)])
 				 
 				 //Copy File and folder /* This step only for PACS Server Setup*
-				 bat label: '', script: "robocopy '"'+CopyFromFolder+'"' "+ BuildOutputLoc +" /S /MT:100 > C:\\log.txt ^& IF %ERRORLEVEL% LEQ 4 exit /B 0"
+				 bat label: '', script: "robocopy '"'${CopyFromFolder}'"'  ${BuildOutputLoc} /S /MT:100 > C:\\log.txt ^& IF %ERRORLEVEL% LEQ 4 exit /B 0"
 				 
 				 //Delete unwanted folders and files
 				 //bat label: '', script: '''DEL /F /Q /A ${deleteFile} RD /S /Q ${CopyFromFolder}'''
