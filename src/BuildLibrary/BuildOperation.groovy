@@ -46,7 +46,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 bat label: '', script: "(del ${deleteFile} > C:\\Deletelog1.txt)"
 				*/ 
 				 //Running Server Instalation Script
-				 bat label: '', script: 'call "C:\\imgdrv\\Supdate.pl"'
+				 bat label: '', script: 'call "C:\Perl64\bin\perl.exe C:\\imgdrv\\Supdate.pl"'
 				}
 			  }		
 		   }
