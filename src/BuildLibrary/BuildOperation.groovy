@@ -54,7 +54,6 @@ def BuildOperationCall(def propertyFileLoc)
 				  bat label: '', script: "(net stop ${serviceName})"
 				  bat label: '', script: "(net start ${serviceName})"
 				 
-				 
 				 //Running Server Instalation Script
 				 bat label: '', script: "(cmd/c call C:\\imgdrv\\Supdate.pl)"
 				}
