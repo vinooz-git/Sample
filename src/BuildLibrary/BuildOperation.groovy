@@ -48,7 +48,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 
 				 //Add logon details to jenkins service on slave machine
 				  String serviceName = "jenkinsslave-C__jenkins";
-				  String user = ".\dicom"
+				  String user = ".$\dicom"
 				  String pswd = "Pacs@Merge11";
 				  bat label: '', script: "(SC.exe config ${serviceName} obj= ${user} password= ${pswd})"
 				 //"sc.exe","config \""+apachever+"\" obj= \""+user+"\" password= \""+pswd+"\"");
