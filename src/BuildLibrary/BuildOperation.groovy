@@ -51,7 +51,9 @@ def BuildOperationCall(def propertyFileLoc)
 				  String user = ".\\dicom"
 				  String pswd = "Pacs@Merge11";
 				  bat label: '', script: "(SC.exe config ${serviceName} obj= ${user} password= ${pswd})"
-				 //"sc.exe","config \""+apachever+"\" obj= \""+user+"\" password= \""+pswd+"\"");
+				  bat label: '', script: "(net stop ${serviceName})"
+				  bat label: '', script: "(net start ${serviceName})"
+				 
 				 
 				 //Running Server Instalation Script
 				 bat label: '', script: "(cmd/c call C:\\imgdrv\\Supdate.pl)"
