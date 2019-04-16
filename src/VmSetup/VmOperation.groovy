@@ -39,7 +39,7 @@ def file = new File(propertyFileLoc);
 			if(Action.contains(poweron))
 				{
 					VmPowerOn(VmName,Network)
-					sleep 10;
+					sleep 30;
 				}		
 			}
 		}

@@ -10,8 +10,8 @@ def call()
   {
     stage('VmSetup') 
 	{
-    //def methodcall = new VmSetup.VmOperation()
-	//methodcall.VMOperationCall(propertyFileLoc)
+    def methodcall = new VmSetup.VmOperation()
+	methodcall.VMOperationCall(propertyFileLoc)
 	echo "Vm operations completed"
     }
     stage('Server_BuildDownload')
