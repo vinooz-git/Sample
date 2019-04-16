@@ -44,7 +44,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 //Delete unwanted folders and files
 				 bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
 				 bat label: '', script: "(del ${deleteFile} > C:\\Deletelog1.txt)"
-				  */
+				  
 				 
 				 //Add logon details to jenkins service on slave machine
 				  String serviceName = "jenkinsslave-C__jenkins";
@@ -53,7 +53,7 @@ def BuildOperationCall(def propertyFileLoc)
 				  bat label: '', script: "(SC.exe config ${serviceName} obj= ${user} password= ${pswd})"
 				  bat label: '', script: "(net stop ${serviceName})"
 				  bat label: '', script: "(net start ${serviceName})"
-				 
+				 */
 				 //Running Server Instalation Script
 				 bat label: '', script: "(cmd/c call C:\\imgdrv\\Supdate.pl)"
 				}
