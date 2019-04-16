@@ -26,7 +26,7 @@ def BuildOperationCall(def propertyFileLoc)
 			ServersBuildDownload["node_" + nodeName] = {
 			node(nodeName) 
 				{		
-				/*
+				  
 				 //Download latest build 
 				 httpRequest ignoreSslErrors: true, outputFile: BuildUrl.get(1), responseHandle: 'NONE', url: BuildUrl.get(0)
 				 
@@ -44,7 +44,7 @@ def BuildOperationCall(def propertyFileLoc)
 				 //Delete unwanted folders and files
 				 bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
 				 bat label: '', script: "(del ${deleteFile} > C:\\Deletelog1.txt)"
-				*/ 
+				  
 				 //Running Server Instalation Script
 				 bat label: '', script: 'start cmd.exe'
 				}
