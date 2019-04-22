@@ -14,13 +14,14 @@ def call()
 	//methodcall.VMOperationCall(propertyFileLoc)
 	echo "Vm operations completed"
     }
-    stage('Server_BuildDownload')
+    stage('Exec_ServerSetup')
 	{
-	def methodcall = new BuildLibrary.BuildOperation()
+	//def methodcall = new BuildLibrary.BuildOperation()
+	def methodcall = new BuildLibrary.BuildOperationNew()
 	methodcall.BuildOperationCall(propertyFileLoc)
-	echo "Test Stage Completed"
+	echo "Execution Server side setup Stage Completed"
     }
-	stage('ServerSetup')
+	stage('Exec_ClientSetup')
 	{
     
     }
