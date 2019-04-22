@@ -20,6 +20,7 @@ def BuildOperationCall(def propertyFileLoc)
 		{
 		 def VmName = rowvalues[1].trim();
 		 println"Vm Name is "+VmName
+		 ServersBuildDownload["node_" + nodeName] = {
 			node(VmName) 
 			{		
 			 //Download latest build 
@@ -53,10 +54,7 @@ def BuildOperationCall(def propertyFileLoc)
 		}
 	}
   }
-  else
-  {
-  echo "Exception Occurs, Problem in reading Input File"
-  }
+  parallel ServersBuildDownload;
 }
 def getBuildOutLoc(row)
 {
