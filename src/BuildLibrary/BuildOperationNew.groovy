@@ -6,6 +6,7 @@ def BuildOperationCall(def propertyFileLoc)
   def BuildOutputLoc = null;
   def file = new File(propertyFileLoc);
   def ServersBuildDownload = [:]
+  def ServerExecution =[:]
   if (file.exists() && file.isFile()) 
   {
     String[] lines = file.text.split('\n')
@@ -20,7 +21,7 @@ def BuildOperationCall(def propertyFileLoc)
 		{
 		 def VmName = rowvalues[1].trim();
 		 println"Vm Name is "+VmName
-		 ServersBuildDownload["node_" + nodeName] = {
+		 ServersBuildDownload["node_" + VmName] = {
 			node(VmName) 
 			{		
 			 //Download latest build 
@@ -41,20 +42,24 @@ def BuildOperationCall(def propertyFileLoc)
 			 bat label: '', script: "(RD /S /Q \"${CopyFromFolder}\" > C:\\Deletelog1.txt)"
 			 bat label: '', script: "(del ${deleteFile} > C:\\Deletelog1.txt)"
 			}
+		  }
 		}
 		if(Action.contains("Exec_ServerInstall"))
 		{
 		def VmName = rowvalues[1].trim();
 		 println"Vm Name is "+VmName
+		 ServerExecution["Exec_" + VmName] = {
 			node(VmName) 
 			{		
 			//Running Server Installation Script
 			 bat label: '', script: "(cmd/c call C:\\imgdrv\\Supdate.pl)"
 			}
+		  }
 		}
 	}
   }
   parallel ServersBuildDownload;
+  parallel ServerExecution;
 }
 def getBuildOutLoc(row)
 {
