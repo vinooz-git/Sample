@@ -61,7 +61,7 @@ def getBuildOutLoc(row)
   return outLoc
 }
 
-def getBuildUrl(projectname,row,buildOutLoc)
+def getBuildUrl(row,buildOutLoc)
 {	
 	def buildCmd = [];
 	String[] rowvalues = row.split('=');
