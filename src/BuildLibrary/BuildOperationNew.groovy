@@ -43,8 +43,13 @@ def BuildOperationCall(def propertyFileLoc)
 		}
 		if(Action.contains("Exec_ServerInstall"))
 		{
-		 //Running Server Installation Script
+		def VmName = rowvalues[1].trim();
+		 println"Vm Name is "+VmName
+			node(VmName) 
+			{		
+			//Running Server Installation Script
 			 bat label: '', script: "(cmd/c call C:\\imgdrv\\Supdate.pl)"
+			}
 		}
 	}
   }
