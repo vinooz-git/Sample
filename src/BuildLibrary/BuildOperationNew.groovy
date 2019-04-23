@@ -22,7 +22,6 @@ def BuildOperationCall(def propertyFileLoc)
 		if(Action.contains("BuildDownload"))
 		{
 		 def VmName = rowvalues[1].trim();
-		 println"Vm Name is "+VmName
 		 ServersBuildDownload["node_" + VmName] = {
 			node(VmName) 
 			{		
