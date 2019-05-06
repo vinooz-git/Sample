@@ -3,7 +3,7 @@ class CsvReader {
 	List ReadCSVFile(String header)
 	{
 		int row,col,rowCount,colCount = 0;
-		def file = new File("D:\Jenkins\JobConfig.csv")
+		def file = new File("D:\\Jenkins\\JobConfig.csv")
 		def Arrayvalues = [];
 		String[] lines = file.text.split('\n')
 		rowCount = lines.size();
@@ -36,7 +36,7 @@ class CsvReader {
 		def field = null //Declared that variable to use same method name with different return type
 		int row,col,rowCount,colCount = 0;
 		def Arrayvalues = [];
-		def file = new File("D:\Jenkins\JobConfig.csv")
+		def file = new File("D:\\Jenkins\\JobConfig.csv")
 		String[] lines = file.text.split('\n')
 		rowCount = lines.size();
 		for(int i =0; i<rowCount; i++)
