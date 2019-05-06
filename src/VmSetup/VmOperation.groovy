@@ -4,6 +4,7 @@ Parameters :
   propertyFileLoc - Project pipeline Property file 
 */
 package VmSetup
+package Utils
 
 def VMOperationCall(def propertyFileLoc)
 {
@@ -12,9 +13,13 @@ def poweroff = "VmPowerOff"
 def poweron = "VmPowerOn"    
 def revert = "VmRevert"
 def tasks = [:]                                           //Empty map 
-def file = new File(propertyFileLoc);
-  if (file.exists() && file.isFile()) 
-  {
+CsvReader reader = new CsvReader()
+def fileContent = [];
+fileContent = reader.ReadCSVFile("VmSetup")
+println "File Content:"+fileContent.get(0);
+fileContent = reader.ReadCSVFile("VmSetup","field")
+println "File Content:"+fileContent.get(0);
+/*
     String[] lines = file.text.split('\n')
 	for(int i =1; i<lines.size(); i++)
 	{
@@ -39,17 +44,13 @@ def file = new File(propertyFileLoc);
 			if(Action.contains(poweron))
 				{
 					VmPowerOn(VmName,Network)
-					sleep 30;
+					sleep 10;
 				}		
 			}
 		}
 	}
 	parallel tasks;
-  } 
- else
- {
- echo "Exception Occurs, The Csv File not in Valid format"
- }
+  */
 }
 def VmRevert(VmName,Network,Snapshot)
 	{

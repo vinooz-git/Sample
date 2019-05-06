@@ -10,15 +10,14 @@ def call()
   {
     stage('VmSetup') 
 	{
-    //def methodcall = new VmSetup.VmOperation()
-	//methodcall.VMOperationCall(propertyFileLoc)
+    def methodcall = new VmSetup.VmOperation()
+	methodcall.VMOperationCall(propertyFileLoc)
 	echo "Vm operations completed"
     }
     stage('Exec_ServerSetup')
 	{
 	//def methodcall = new BuildLibrary.BuildOperation()
-	def methodcall = new BuildLibrary.BuildOperationNew()
-	methodcall.BuildOperationCall(propertyFileLoc)
+	//methodcall.BuildOperationCall(propertyFileLoc)
 	echo "Execution Server side setup Stage Completed"
     }
 	stage('Exec_ClientSetup')

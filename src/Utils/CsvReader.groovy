@@ -1,8 +1,9 @@
-class CSVReader {
+package Utils
+class CsvReader {
 	List ReadCSVFile(String header)
 	{
 		int row,col,rowCount,colCount = 0;
-		def file = new File("C:/Newrepo/vars/ConfigParam.csv")
+		def file = new File("D:\Jenkins\JobConfig.csv")
 		def Arrayvalues = [];
 		String[] lines = file.text.split('\n')
 		rowCount = lines.size();
@@ -16,7 +17,7 @@ class CSVReader {
 		}
 		for(int j=row; j<rowCount; j++)
 		{
-			if(lines[j].contains("@Stage") || lines[j] == "<EOF>" || lines[j] == '\r')
+			if(lines[j].contains("@Stage") || lines[j] == "<EOF>" || lines[j] == '\r' )
 				break
 			else
 				Arrayvalues.add(lines[j].toString())
@@ -35,7 +36,7 @@ class CSVReader {
 		def field = null //Declared that variable to use same method name with different return type
 		int row,col,rowCount,colCount = 0;
 		def Arrayvalues = [];
-		def file = new File("C:/Newrepo/vars/ConfigParam.csv")
+		def file = new File("D:\Jenkins\JobConfig.csv")
 		String[] lines = file.text.split('\n')
 		rowCount = lines.size();
 		for(int i =0; i<rowCount; i++)
