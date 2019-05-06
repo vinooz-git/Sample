@@ -12,7 +12,7 @@ def poweroff = "VmPowerOff"
 def poweron = "VmPowerOn"    
 def revert = "VmRevert"
 def tasks = [:]                                           //Empty map 
-CsvReader reader = new Utils.CsvReader()
+def reader = new Utils.CsvReader()
 def fileContent = [];
 fileContent = reader.ReadCSVFile("VmSetup")
 println "File Content:"+fileContent.get(0);
