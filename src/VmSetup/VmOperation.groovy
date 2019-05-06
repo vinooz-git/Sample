@@ -4,7 +4,6 @@ Parameters :
   propertyFileLoc - Project pipeline Property file 
 */
 package VmSetup
-package Utils
 
 def VMOperationCall(def propertyFileLoc)
 {
@@ -13,7 +12,7 @@ def poweroff = "VmPowerOff"
 def poweron = "VmPowerOn"    
 def revert = "VmRevert"
 def tasks = [:]                                           //Empty map 
-CsvReader reader = new CsvReader()
+CsvReader reader = new Utils.CsvReader()
 def fileContent = [];
 fileContent = reader.ReadCSVFile("VmSetup")
 println "File Content:"+fileContent.get(0);
