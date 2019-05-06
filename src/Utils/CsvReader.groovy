@@ -33,7 +33,7 @@ class CsvReader {
 	}
 	List ReadCSVFile(String header, String field)
 	{
-		def field = null //Declared that variable to use same method name with different return type
+		String field = null //Declared that variable to use same method name with different return type
 		int row,col,rowCount,colCount = 0;
 		def Arrayvalues = [];
 		def file = new File("D:\\Jenkins\\JobConfig.csv")
