@@ -18,13 +18,13 @@ def call()
 		for(int j=0; j<fileContent.size(); j++)
 		{
 		//"$VmPowerOff,pa-tst4-ws16,Neptune $VmRevert pa-tst4-ws16,neptune,baseimage  $VmPowerOn pa-tst4-ws16,neptune"
-			String[] WholeStr = fileContent[j].split('$');
-			println "WholeStr :"+WholeStr[0];
+			String[] WholeStr = fileContent[j].split('\\$');
+			println "WholeStr :"+WholeStr[1];
 		//$VmPowerOff pa-tst4-ws16,Neptune
-			for(int k=0; k<WholeStr.size(); k++)
+			for(int k=1; k<WholeStr.size(); k++)
 			{
 				String[] splitStr = WholeStr[k].split(',');
-				println "SplitStr :"+splitStr[0];
+				println "SplitStr :"+splitStr[];
 				for(int i =1; i< splitStr.size(); i++ )
 				{
 					arg.add(splitStr[i]);
