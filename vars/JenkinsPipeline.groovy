@@ -35,7 +35,8 @@ def call()
 				def test = new VmSetup.VmOperation()
 				test.metaClass.methods.each { method ->
 				if (method.name == splitStr[0]) {
-				method.invoke(test, arg as String[])
+				println"method.name"+method.name
+				//method.invoke(test, arg as String[])
 				}
 			}
 		  }
