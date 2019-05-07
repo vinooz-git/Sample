@@ -5,8 +5,9 @@ Parameters :
 */
 package VmSetup
 
-def VMOperationCall(def propertyFileLoc)
+class VMOperationCall(def propertyFileLoc)
 {
+/*
 //PropertyFile Keywords and given variables should be matched
 def poweroff = "VmPowerOff"
 def poweron = "VmPowerOn"    
@@ -18,7 +19,7 @@ fileContent = reader.ReadCSVFile("VmSetup")
 println "File Content:"+fileContent.get(0);
 fileContent = reader.ReadCSVFile("VmSetup","field")
 println "File Content:"+fileContent.get(0);
-/*
+
     String[] lines = file.text.split('\n')
 	for(int i =1; i<lines.size(); i++)
 	{
@@ -50,7 +51,7 @@ println "File Content:"+fileContent.get(0);
 	}
 	parallel tasks;
   */
-}
+
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
@@ -68,3 +69,4 @@ def VmPowerOff(VmName,Network)
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	echo "${VmName} is Switched Off"
 	}
+}
