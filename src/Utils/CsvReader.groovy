@@ -11,7 +11,7 @@ class CsvReader {
 		{
 			if(lines[i].contains(header))
 			{
-				row = i+2
+				row = i+1
 				break
 			}
 		}
@@ -25,10 +25,12 @@ class CsvReader {
 		int arrLength = Arrayvalues.size()
 		for(int k=0; k<arrLength; k++)
 		{
-			Arrayvalues[k] = Arrayvalues[k].replace('{', '')
-			Arrayvalues[k] = Arrayvalues[k].replace('}', '')
-			Arrayvalues[k] = Arrayvalues[k].replace(' ', '')
+			Arrayvalues[k] = Arrayvalues[k].replace('', '')
+			Arrayvalues[k] = Arrayvalues[k].replace('(', ' ')
+			println"Arrayvalues[k] : "+Arrayvalues[k]
+			Arrayvalues[k] = Arrayvalues[k].replace(')', '')
 		}
+		println"Arrayvalues "+Arrayvalues.toString()
 		return Arrayvalues
 	}
 	List ReadCSVFile(String header, String field)
