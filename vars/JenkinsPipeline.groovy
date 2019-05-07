@@ -35,7 +35,7 @@ def call()
 				def test = new VmSetup.VmOperation()
 				test.metaClass.methods.each { method ->
 				if (method.name == splitStr[0]) {
-				method.invoke(test, ["pa-tst4-ws16","Neptune"])
+				method.invoke(test, new Object[] {arg})
 				}
 			}
 		  }
