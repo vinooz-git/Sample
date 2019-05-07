@@ -33,9 +33,10 @@ def call()
 				}
 				println"Arg "+arg.toString()
 				def test = new VmSetup.VmOperation()
+				Object[] methodArgs = new Object[] {arg};
 				test.metaClass.methods.each { method ->
 				if (method.name == splitStr[0]) {
-				method.invoke(test, new Object[] {arg})
+				method.invoke(test, methodArgs)
 				}
 			}
 		  }
