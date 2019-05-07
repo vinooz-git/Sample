@@ -2,6 +2,7 @@ package Utils
 class CsvReader {
 	List ReadCSVFile(String header)
 	{
+	println"readcsvfile"
 		int row,col,rowCount,colCount = 0;
 		def file = new File("D:\\Jenkins\\JobConfig.csv")
 		def Arrayvalues = [];
@@ -23,12 +24,13 @@ class CsvReader {
 				Arrayvalues.add(lines[j].toString())
 		}
 		int arrLength = Arrayvalues.size()
+		println"arrLength:$arrLength"
 		for(int k=0; k<arrLength; k++)
 		{
 			Arrayvalues[k] = Arrayvalues[k].replace('', '')
 			Arrayvalues[k] = Arrayvalues[k].replace('(', ' ')
-			println"Arrayvalues[k] : "+Arrayvalues[k]
 			Arrayvalues[k] = Arrayvalues[k].replace(')', '')
+			println"Arrayvalues[k] : "+Arrayvalues[k]
 		}
 		println"Arrayvalues "+Arrayvalues.toString()
 		return Arrayvalues
