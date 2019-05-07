@@ -15,6 +15,8 @@ def call()
 	   def reader = new Utils.CsvReader()
 		def fileContent = [];
 		fileContent = reader.ReadCSVFile("VmSetup")
+		println "fileContent0 :"+fileContent[0];
+		println "fileContent :"+fileContent[1];
 		for(int j=0; j<fileContent.size(); j++)
 		{
 		//"$VmPowerOff,pa-tst4-ws16,Neptune $VmRevert pa-tst4-ws16,neptune,baseimage  $VmPowerOn pa-tst4-ws16,neptune"
