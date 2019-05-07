@@ -31,7 +31,7 @@ def call()
 				{
 					arg.add(splitStr[i]);
 				}
-				println"Arg "+arg as String[]
+				println"Arg "+arg.toString()
 				def test = new VmSetup.VmOperation()
 				test.metaClass.methods.each { method ->
 				if (method.name == splitStr[0]) {
