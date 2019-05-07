@@ -24,7 +24,7 @@ def call()
 			for(int k=1; k<WholeStr.size(); k++)
 			{
 				String[] splitStr = WholeStr[k].split(',');
-				println "SplitStr :"+splitStr[];
+				println "SplitStr :"+splitStr[0];
 				for(int i =1; i< splitStr.size(); i++ )
 				{
 					arg.add(splitStr[i]);
