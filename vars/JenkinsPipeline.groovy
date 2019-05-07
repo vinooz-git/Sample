@@ -21,9 +21,9 @@ def call()
 			String[] WholeStr = fileContent[j].split('$');
 			println "WholeStr :"+WholeStr;
 		//$VmPowerOff pa-tst4-ws16,Neptune
-			for(int k=0; k<splitStr.size(); k++)
+			for(int k=0; k<WholeStr.size(); k++)
 			{
-				String[] SplitStr = fileContent[j].split(',');
+				String[] SplitStr = WholeStr[k].split(',');
 				println "SplitStr :"+SplitStr;
 				for(int i =1; i< splitStr.size(); i++ )
 				{
