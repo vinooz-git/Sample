@@ -15,16 +15,16 @@ def call()
 	   def reader = new Utils.CsvReader()
 		def fileContent = [];
 		fileContent = reader.ReadCSVFile("VmSetup")
-		for(int j=0; j<fileContent.size(); i++)
+		for(int j=0; j<fileContent.size(); j++)
 		{
 		//"$VmPowerOff,pa-tst4-ws16,Neptune $VmRevert pa-tst4-ws16,neptune,baseimage  $VmPowerOn pa-tst4-ws16,neptune"
 			String[] WholeStr = fileContent[j].split('$');
-			println "WholeStr :"+WholeStr;
+			println "WholeStr :"+WholeStr[0];
 		//$VmPowerOff pa-tst4-ws16,Neptune
 			for(int k=0; k<WholeStr.size(); k++)
 			{
 				String[] splitStr = WholeStr[k].split(',');
-				println "SplitStr :"+splitStr;
+				println "SplitStr :"+splitStr[0];
 				for(int i =1; i< splitStr.size(); i++ )
 				{
 					arg.add(splitStr[i]);
