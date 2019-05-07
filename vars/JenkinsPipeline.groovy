@@ -23,7 +23,7 @@ def call()
 		//$VmPowerOff pa-tst4-ws16,Neptune
 			for(int k=0; k<WholeStr.size(); k++)
 			{
-				String[] SplitStr = WholeStr[k].split(',');
+				String[] splitStr = WholeStr[k].split(',');
 				println "SplitStr :"+SplitStr;
 				for(int i =1; i< splitStr.size(); i++ )
 				{
