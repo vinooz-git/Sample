@@ -37,7 +37,12 @@ def call()
 				//Object[] methodArgs = new Object[] {arg};
 				test.metaClass.methods.each { method ->
 				if (method.name == splitStr[0]) {
-				method.invoke(test, arg as String[])
+				println "method.name :"+method.name
+				//method.invoke(test, arg as String[])
+				
+				//String methodname = "test1"
+				test.method(arg as String[])
+				
 				}
 			}
 		  }
