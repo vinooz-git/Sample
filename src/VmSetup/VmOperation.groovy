@@ -5,7 +5,7 @@ Parameters :
 */
 package VmSetup
 
-class VMOperationCall
+class VmOperation
 {
 /*
 //PropertyFile Keywords and given variables should be matched
