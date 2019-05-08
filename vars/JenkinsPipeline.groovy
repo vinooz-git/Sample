@@ -32,6 +32,7 @@ def call()
 					arg.add(splitStr[i]);
 				}
 				println"Arg "+arg.toString()
+				println "splitStr[0]:"+splitStr[0]
 				def test = new VmSetup.VmOperation()
 				//Object[] methodArgs = new Object[] {arg};
 				test.metaClass.methods.each { method ->
