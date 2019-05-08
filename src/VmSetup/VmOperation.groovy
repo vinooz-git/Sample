@@ -50,7 +50,7 @@ println "File Content:"+fileContent.get(0);
 	}
 	parallel tasks;
   */
-}
+
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
@@ -73,4 +73,5 @@ def VmPowerOff(String VmName,String Network)
 	 
 	echo "${VmName} is Switched Off"
 	
+	}
 	}
