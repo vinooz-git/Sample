@@ -5,8 +5,6 @@ Parameters :
 */
 package VmSetup
 
-class VmOperation
-{
 /*
 //PropertyFile Keywords and given variables should be matched
 def poweroff = "VmPowerOff"
@@ -64,7 +62,7 @@ def VmPowerOn(VmName,Network)
 	echo "${VmName} is Switched ON"
 	}
 
-def VmPowerOff(VmName,Network)
+def VmPowerOff(String VmName,String Network)
 	{
 	//echo "VmName is ${VmName}"
 	echo "Network is ${Network}"
@@ -72,4 +70,3 @@ def VmPowerOff(VmName,Network)
 	echo "${VmName} is Switched Off"
 	
 	}
-}

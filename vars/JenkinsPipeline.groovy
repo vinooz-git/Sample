@@ -39,7 +39,7 @@ def call()
 				if (method.name == splitStr[0]) {
 				println "method.name :"+method.name
 				//method.invoke(test, arg as String[])
-				String methodname = "VmPowerOff";
+				String methodname = method.name;
 				
 				test."$methodname"("pa-tst4-ws16","NEPTUNE")
 				
