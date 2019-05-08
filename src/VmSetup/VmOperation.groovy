@@ -61,15 +61,15 @@ def VmPowerOn(VmName,Network)
 	vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: VmName], serverName: Network
 	echo "${VmName} is Switched ON"
 	}
-
+@NonCPS
 def VmPowerOff(String VmName,String Network)
 	{
 	echo "VmName is ${VmName}"
 	echo "Network is ${Network}"
-	node{
+	 
 	//vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: 'pa-tst4-ws16'], serverName: 'NEPTUNE'
-	}
+	 
 	echo "${VmName} is Switched Off"
 	
 	}
