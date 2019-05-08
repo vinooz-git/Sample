@@ -66,8 +66,8 @@ def VmPowerOn(VmName,Network)
 
 def VmPowerOff(VmName,Network)
 	{
-	echo "VmName :"+VmName
-	echo "Network :"+Network
+	echo "VmName is ${VmName}"
+	echo "Network is ${Network}"
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
 	echo "${VmName} is Switched Off"
 	}
