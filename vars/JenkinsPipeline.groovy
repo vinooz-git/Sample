@@ -39,8 +39,9 @@ def call()
 				if (method.name == splitStr[0]) {
 				println "method.name :"+method.name
 				//method.invoke(test, arg as String[])
-				//String methodname = "test1"
-				test.method.name(arg as String[])
+				String methodname = method.name;
+				//csv."$methodname"(10,20)
+				test."$methodname"(arg as String[])
 				
 				}
 			}
