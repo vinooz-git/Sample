@@ -51,12 +51,13 @@ println "File Content:"+fileContent.get(0);
 	parallel tasks;
   */
 }
+@NonCPS
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
 	echo "${VmName} is Reverted to ${Snapshot} - Snapshot"
 	}
-
+@NonCPS
 def VmPowerOn(VmName,Network)
 	{
 	vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: VmName], serverName: Network
@@ -65,20 +66,20 @@ def VmPowerOn(VmName,Network)
 @NonCPS
 def VmPowerOff(String VmName,String Network)
 	{
-	try
-	{
-	echo "VmName is ${VmName}"
-	echo "Network is ${Network}"
+		try
+		{
+		echo "VmName is ${VmName}"
+		echo "Network is ${Network}"
 	 
-	//vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
-	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: 'pa-tst4-ws16'], serverName: 'NEPTUNE'
+		//vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
+		vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: 'pa-tst4-ws16'], serverName: 'NEPTUNE'
 	 
-	echo "${VmName} is Switched Off"
-	}
-	catch(Exception e)
-	{
-	echo e.toString()
-	}
+		echo "${VmName} is Switched Off"
+		}
+		catch(Exception e)
+		{
+			echo "Exception Occured ${e}"
+		}
 	
 	}
 	
