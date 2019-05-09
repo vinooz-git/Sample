@@ -65,6 +65,8 @@ def VmPowerOn(VmName,Network)
 @NonCPS
 def VmPowerOff(String VmName,String Network)
 	{
+	try
+	{
 	echo "VmName is ${VmName}"
 	echo "Network is ${Network}"
 	 
@@ -72,6 +74,11 @@ def VmPowerOff(String VmName,String Network)
 	vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: 'pa-tst4-ws16'], serverName: 'NEPTUNE'
 	 
 	echo "${VmName} is Switched Off"
+	}
+	catch(Exception e)
+	{
+	echo e.toString()
+	}
 	
 	}
 	
