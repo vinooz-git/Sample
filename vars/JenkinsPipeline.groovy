@@ -34,14 +34,14 @@ def call()
 				println"Arg "+arg.toString()
 				println "splitStr[0]:"+splitStr[0]
 				def test = new VmSetup.VmOperation()
-				//Object[] methodArgs = new Object[] {arg};
+				Object[] methodArgs = new Object[] {arg};
 				test.metaClass.methods.each { method ->
 				if (method.name == splitStr[0]) {
 				println "method.name :"+method.name
 				//method.invoke(test, arg as String[])
 				String methodname = method.name;
 				
-				test."$methodname"(arg as String[])
+				test."$methodname"(methodArgs)
 				
 				}
 			}
