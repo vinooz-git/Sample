@@ -4,7 +4,7 @@ Parameters :
   propertyFileLoc - Project pipeline Property file 
 */
 package VmSetup
-class VmOperation
+def call()
 {
 /*
 //PropertyFile Keywords and given variables should be matched
@@ -50,7 +50,7 @@ println "File Content:"+fileContent.get(0);
 	}
 	parallel tasks;
   */
-
+}
 def VmRevert(VmName,Network,Snapshot)
 	{
 	vSphere buildStep: [$class: 'RevertToSnapshot', snapshotName: Snapshot, vm: VmName], serverName: Network
@@ -74,4 +74,4 @@ def VmPowerOff(String VmName,String Network)
 	echo "${VmName} is Switched Off"
 	
 	}
-	}
+	
