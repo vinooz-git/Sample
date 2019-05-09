@@ -41,7 +41,7 @@ def call()
 				//method.invoke(test, arg as String[])
 				String methodname = method.name;
 				
-				test."$methodname"("pa-tst4-ws16","NEPTUNE")
+				test."$methodname"(arg as String[])
 				
 				}
 			}

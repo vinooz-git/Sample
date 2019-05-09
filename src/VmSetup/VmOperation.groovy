@@ -58,7 +58,7 @@ def VmRevert(VmName,Network,Snapshot)
 	echo "${VmName} is Reverted to ${Snapshot} - Snapshot"
 	}
 @NonCPS
-def VmPowerOn(VmName,Network)
+def VmPowerOn(String VmName,String Network)
 	{
 	echo "Network is ${Network}"
 	//vSphere buildStep: [$class: 'PowerOn', timeoutInSeconds: 260, vm: VmName], serverName: Network
