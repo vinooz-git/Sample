@@ -72,7 +72,7 @@ def VmPowerOff(String VmName,String Network)
 		echo "VmName is ${VmName}"
 		echo "Network is ${Network}"
 	    //vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: VmName], serverName: Network
-		httpRequest ignoreSslErrors: true, outputFile: 'C:\PACS_build\8_1_0', responseHandle: 'NONE', url: 'http://10.4.16.25:8080/job/CURRENT_FULL/lastSuccessfulBuild/artifact/server/cds/IBM%20Merge%20PACS%20Server%20Software%20CD/*zip*/IBM%20Merge%20PACS%20Server%20Software%20CD.zip,pa-tst4-ws16)'
+		httpRequest ignoreSslErrors: true, outputFile: 'C:\\PACS_build\\8_1_0', responseHandle: 'NONE', url: 'http://10.4.16.25:8080/job/CURRENT_FULL/lastSuccessfulBuild/artifact/server/cds/IBM%20Merge%20PACS%20Server%20Software%20CD/*zip*/IBM%20Merge%20PACS%20Server%20Software%20CD.zip,pa-tst4-ws16)'
 		//vSphere buildStep: [$class: 'PowerOff', evenIfSuspended: false, ignoreIfNotExists: false, shutdownGracefully: false, vm: 'pa-tst4-ws16'], serverName: 'NEPTUNE'
 		echo "${VmName} is Switched Off"
 		}
